@@ -52,3 +52,13 @@ como administrador quiero:
 - listar actividad
 	- fecha
 	- lugar
+
+	PREGUNTAS GEMA
+	Atrib password
+	Atrib fecha
+	Habitaciones libres o ocupadas
+	Clase Clientes
+	Clase Habitaciones
+    EstructuraOk
+
+	Singleton

@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 public @Data class Actividad {
-    //private date fecha;
     private int id;
     private String nombre;
     private String lugar;
