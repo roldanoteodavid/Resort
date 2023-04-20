@@ -4,12 +4,16 @@ import lombok.Data;
 import org.example.common.Comprobacion;
 import org.example.common.LugarException;
 
+import java.time.LocalDate;
+import java.util.List;
+
 public @Data class Actividad {
     //private date fecha;
     private int id;
     private String nombre;
     private String lugar;
     private double precio;
+    private List<LocalDate> fechas;
 
     public Actividad(int id,String nombre,String lugar,double precio) throws LugarException {
         this.id=id;

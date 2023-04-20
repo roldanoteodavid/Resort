@@ -36,4 +36,16 @@ public @Data class Cliente {
         Comprobacion.alFrances(pais);
         this.pais = pais;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "dni='" + dni + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", nacimiento=" + nacimiento +
+                ", telefono='" + telefono + '\'' +
+                ", reservas=" + reservas +
+                ", pais='" + pais + '\'' +
+                '}';
+    }
 }

@@ -1,4 +1,11 @@
 package org.example.dao;
 
-public class DaoReservas {
+import org.example.domain.*;
+
+import java.util.List;
+
+public interface DaoReservas {
+    boolean addReserva(Reserva reserva);
+    boolean modificarCliente(String DNI);
+
 }
