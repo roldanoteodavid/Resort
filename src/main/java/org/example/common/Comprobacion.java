@@ -26,7 +26,7 @@ public class Comprobacion {
 
     public static void alFrances(String tipo) throws AlFrancesException {
         boolean noEsta = true;
-        Tipo aux [] = Tipo.values();
+        Pais aux [] = Pais.values();
         for(int i=0; i<aux.length && !noEsta;i++){
             if (aux[i].toString().equalsIgnoreCase(tipo))
                 noEsta=false;
