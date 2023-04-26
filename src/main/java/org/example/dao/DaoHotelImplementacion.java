@@ -21,6 +21,11 @@ public class DaoHotelImplementacion implements DaoHotel {
     }
 
     @Override
+    public void setHotel(Hotel hotel) {
+
+    }
+
+    @Override
     public boolean anyadirHabitacion(Habitacion habitacion) {
         return false;
     }

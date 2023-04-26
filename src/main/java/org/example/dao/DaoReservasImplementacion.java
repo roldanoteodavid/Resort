@@ -25,6 +25,11 @@ public class DaoReservasImplementacion implements DaoReservas {
     }
 
     @Override
+    public void setHotel(Hotel hotel) {
+
+    }
+
+    @Override
     public boolean iniciarSesion(String dni, String contrasenya) {
         /*
         boolean inicio = false;

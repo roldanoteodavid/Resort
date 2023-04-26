@@ -1,7 +1,9 @@
 package org.example.service;
 
 import org.example.dao.DaoHotel;
+import org.example.dao.DaoHotelFicheros;
 import org.example.dao.DaoHotelImplementacion;
+import org.example.dao.DaoReservas;
 import org.example.domain.*;
 
 import java.time.LocalDate;
@@ -68,6 +70,22 @@ public class GestionHotel implements IGestionHotel {
 
     public List<Actividad> listarActividad() {
         return daoHotel.listarActividad();
+    }
+
+    @Override
+    public boolean escribirFicheroBinario() {
+        return DaoHotelFicheros.escribirFicheroBinario(daoHotel.getHotel());
+    }
+
+    @Override
+    public boolean cargarFicheroBinario() {
+        boolean cargado = false;
+        Hotel hotel = DaoHotelFicheros.leerFicheroBinario();
+        if (hotel != null) {
+            daoHotel.setHotel(hotel);
+            cargado = true;
+        }
+        return cargado;
     }
 
 }

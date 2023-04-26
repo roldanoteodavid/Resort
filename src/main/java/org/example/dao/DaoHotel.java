@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface DaoHotel {
     Hotel getHotel();
+    void setHotel(Hotel hotel);
     boolean anyadirHabitacion(Habitacion habitacion);
     boolean borrarHabitacion(int numeroHab);
     boolean comprobarDisponibilidad(LocalDate date);

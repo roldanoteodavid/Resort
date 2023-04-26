@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.dao.DaoHotelFicheros;
 import org.example.dao.DaoReservas;
 import org.example.dao.DaoReservasImplementacion;
 import org.example.domain.Actividad;
@@ -63,6 +64,22 @@ public class GestionReservas implements IGestionReservas{
     @Override
     public boolean modificarReservaFecha(String dni, LocalDate fecha) {
         return false;
+    }
+
+    @Override
+    public boolean escribirFicheroBinario() {
+        return DaoHotelFicheros.escribirFicheroBinario(daoReservas.getHotel());
+    }
+
+    @Override
+    public boolean cargarFicheroBinario() {
+        boolean cargado = false;
+        Hotel hotel = DaoHotelFicheros.leerFicheroBinario();
+        if (hotel != null) {
+            daoReservas.setHotel(hotel);
+            cargado = true;
+        }
+        return cargado;
     }
 
 
