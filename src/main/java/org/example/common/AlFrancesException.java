@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 public class AlFrancesException extends Exception {
     private static final String[] mensajes = {
-            "Puto frances",
-            "A comer baguetes",
-            "A conquistar tu puto país, imbecil."
+            "Puto gabacho la torre Eiffel son las sobras de Barcelona",
+            "A comer baguettes",
+            "A conquistar tu país."
     };
 
     public AlFrancesException() {

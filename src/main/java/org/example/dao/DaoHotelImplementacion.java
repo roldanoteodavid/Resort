@@ -61,12 +61,12 @@ public class DaoHotelImplementacion implements DaoHotel{
     }
 
     @Override
-    public List<Reserva> listarFecha(boolean ascendente) {
+    public List<Reserva> listarReservasFecha(boolean ascendente) {
         return null;
     }
 
     @Override
-    public List<Reserva> listarHabitacion(boolean ascendente) {
+    public List<Habitacion> listarHabitacionesOcupadas(LocalDate fecha) {
         return null;
     }
 
@@ -83,5 +83,10 @@ public class DaoHotelImplementacion implements DaoHotel{
     @Override
     public boolean borrarActividad(Actividad actividad) {
         return false;
+    }
+
+    @Override
+    public List<Actividad> listarActividad() {
+        return null;
     }
 }
