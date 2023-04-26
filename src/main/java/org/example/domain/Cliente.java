@@ -14,6 +14,7 @@ public @Data class Cliente {
     private String telefono;
     private List<Reserva> reservas;
     private String pais;
+    private String contraseña;
     public Cliente() {
         nacimiento = LocalDate.of(2001, 12, 31);
     }
@@ -35,6 +36,10 @@ public @Data class Cliente {
         this.telefono = telefono;
         Comprobacion.alFrances(pais);
         this.pais = pais;
+    }
+
+    public boolean anyadirreserva(Reserva reserva){
+        return reservas.add(reserva);
     }
 
     @Override

@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public @Data class Reserva {
+    private int id;
     private LocalDate entrada;
     private LocalDate salida;
     private String dnicliente;
