@@ -15,7 +15,7 @@ public interface DaoHotel {
     boolean borrarCliente();
     boolean anyadirCliente(Cliente cliente);
     boolean modificarNombreCliente(String DNI, String nombre);
-    boolean modificarContraseñaCliente(String DNI, String contraseña); //cambiar
+    boolean modificarContrasenyaCliente(String DNI, String contrasenya); //cambiar
     List<Reserva> listarReservasFecha(boolean ascendente);
     List<Habitacion> listarHabitacionesOcupadas(LocalDate fecha);
     boolean isEmptyReservasList();

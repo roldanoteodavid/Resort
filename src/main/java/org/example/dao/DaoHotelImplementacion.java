@@ -61,7 +61,7 @@ public class DaoHotelImplementacion implements DaoHotel {
     }
 
     @Override
-    public boolean modificarContraseñaCliente(String DNI, String contraseña) {
+    public boolean modificarContrasenyaCliente(String DNI, String contrasenya) {
         return false;
     }
 

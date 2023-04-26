@@ -18,7 +18,6 @@ public interface IGestionHotel {
     boolean borrarCliente();
     boolean anyadirCliente(Cliente cliente);
     boolean modificarNombreCliente(String dni, String nombre);
-    boolean modificarContraseñaCliente(String dni, String contraseña); //cambiar
     List<Reserva> listarReservasFecha(boolean ascendente);
     List<Habitacion> listarHabitacionesOcupadas(LocalDate fecha);
     boolean isEmptyReservasList();

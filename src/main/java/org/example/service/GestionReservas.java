@@ -36,8 +36,8 @@ public class GestionReservas implements IGestionReservas{
     }
 
     @Override
-    public boolean modificarContraseña(String dni, String contraseña) {
-        return daoReservas.modificarContraseña(dni, contraseña);
+    public boolean modificarContrasenya(String dni, String contrasenya) {
+        return daoReservas.modificarContrasenya(dni, contrasenya);
     }
 
     @Override

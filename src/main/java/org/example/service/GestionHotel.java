@@ -46,12 +46,6 @@ public class GestionHotel implements IGestionHotel {
         return daoHotel.modificarNombreCliente(dni, nombre);
     }
 
-    public boolean modificarContraseñaCliente(String dni, String contraseña) {
-        return daoHotel.modificarContraseñaCliente(dni, contraseña);
-    }
-
-    ; //cambiar
-
     public List<Reserva> listarReservasFecha(boolean ascendente) {
         return daoHotel.listarReservasFecha(ascendente);
     }

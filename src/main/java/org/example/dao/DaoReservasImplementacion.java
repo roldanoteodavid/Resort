@@ -47,7 +47,7 @@ public class DaoReservasImplementacion implements DaoReservas {
     }
 
     @Override
-    public boolean modificarContraseña(String dni, String contraseña) {
+    public boolean modificarContrasenya(String dni, String contrasenya) {
         /*
         List<Cliente> clientes=hotel.getClientes();
         Cliente cambio=null;

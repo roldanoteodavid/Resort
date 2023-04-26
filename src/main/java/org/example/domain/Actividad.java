@@ -26,5 +26,6 @@ public @Data class Actividad {
         this.nombre=nombre;
         Comprobacion.lugarOk(lugar);
         this.lugar=lugar;
+
     }
 }
