@@ -47,8 +47,8 @@ public class GestionReservas implements IGestionReservas{
     }
 
     @Override
-    public boolean modificarReservaFecha(int id, LocalDate fecha) {
-        return daoReservas.
+    public boolean modificarReservaFecha(String dni, LocalDate fecha) {
+        return false;
     }
 
 
