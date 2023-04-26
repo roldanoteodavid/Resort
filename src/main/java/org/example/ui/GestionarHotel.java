@@ -1,16 +1,23 @@
 package org.example.ui;
 
 import org.example.common.Constantes;
+import org.example.dao.DaoHotelFicheros;
+import org.example.domain.Hotel;
 import org.example.service.GestionHotel;
+import org.example.service.IGestionHotel;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GestionarHotel {
     private static final String pass = "2223";
-    public static void gestion(){
+    private final IGestionHotel serviciosHotel;
+
+    public GestionarHotel() {
+        this.serviciosHotel = new GestionHotel(DaoHotelFicheros.leerFicheroBinario());
+    }
+    public void gestion(){
         Scanner teclado = new Scanner(System.in);
-        GestionHotel gestionHotel = new GestionHotel();
         System.out.println("Introduzca contraseña.");
         if (teclado.nextLine().equals(pass)) {
             System.out.println("Contraseña correcta.");

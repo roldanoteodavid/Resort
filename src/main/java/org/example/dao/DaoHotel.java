@@ -1,14 +1,12 @@
 package org.example.dao;
 
-import org.example.domain.Actividad;
-import org.example.domain.Cliente;
-import org.example.domain.Habitacion;
-import org.example.domain.Reserva;
+import org.example.domain.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public interface DaoHotel {
+    Hotel getHotel();
     boolean anyadirHabitacion(Habitacion habitacion);
     boolean borrarHabitacion(int numeroHab);
     boolean comprobarDisponibilidad(LocalDate date);

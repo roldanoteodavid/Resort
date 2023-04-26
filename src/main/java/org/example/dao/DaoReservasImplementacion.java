@@ -8,11 +8,37 @@ import org.example.domain.Reserva;
 import java.time.LocalDate;
 import java.util.List;
 
-public class DaoReservasImplementacion implements DaoReservas{
+public class DaoReservasImplementacion implements DaoReservas {
     protected final Hotel hotel;
 
     public DaoReservasImplementacion() {
         this.hotel = new Hotel();
+    }
+
+    public DaoReservasImplementacion(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    @Override
+    public Hotel getHotel() {
+        return null;
+    }
+
+    @Override
+    public boolean iniciarSesion(String dni, String contrasenya) {
+        /*
+        boolean inicio = false;
+        for (int i = 0; i < hotel.getClientes().size(); i++) {
+            if (hotel.getClientes().get(i).getDni().equalsIgnoreCase(dni)){
+                if (hotel.getClientes().get(i).getContrasenya().equalsIgnoreCase(contrasenya)){
+                    inicio = true;
+                }
+            }
+        }
+        return inicio;*/
+        return hotel.getClientes().stream()
+                .anyMatch(cliente -> cliente.getDni().equalsIgnoreCase(dni)
+                        && cliente.getContrasenya().equalsIgnoreCase(contrasenya));
     }
 
     @Override
@@ -58,6 +84,20 @@ public class DaoReservasImplementacion implements DaoReservas{
         return null;
     }
 
+    @Override
+    public Cliente clientePorDni(String dni) {
+        /*Cliente cliente = null;
+        for (int i = 0; i < hotel.getClientes().size(); i++) {
+            if (hotel.getClientes().get(i).equals(dni)){
+                cliente = hotel.getClientes().get(i);
+            }
+        }
+        return cliente;*/
+        return hotel.getClientes().stream()
+                .filter(cliente -> cliente.getDni().equalsIgnoreCase(dni))
+                .findFirst()
+                .orElse(null);
+    }
 
 
     @Override

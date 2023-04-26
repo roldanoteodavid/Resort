@@ -5,6 +5,7 @@ import org.example.domain.Cliente;
 import org.example.domain.Habitacion;
 import org.example.domain.Reserva;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 

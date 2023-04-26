@@ -2,10 +2,7 @@ package org.example.service;
 
 import org.example.dao.DaoHotel;
 import org.example.dao.DaoHotelImplementacion;
-import org.example.domain.Actividad;
-import org.example.domain.Cliente;
-import org.example.domain.Habitacion;
-import org.example.domain.Reserva;
+import org.example.domain.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -13,8 +10,8 @@ import java.util.List;
 public class GestionHotel implements IGestionHotel {
     private final DaoHotel daoHotel;
 
-    public GestionHotel() {
-        daoHotel = new DaoHotelImplementacion();
+    public GestionHotel(Hotel hotel) {
+        daoHotel = new DaoHotelImplementacion(hotel);
     }
 
     public boolean anyadirHabitacion(Habitacion habitacion) {

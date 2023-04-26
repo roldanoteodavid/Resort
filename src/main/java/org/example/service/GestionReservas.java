@@ -4,6 +4,7 @@ import org.example.dao.DaoReservas;
 import org.example.dao.DaoReservasImplementacion;
 import org.example.domain.Actividad;
 import org.example.domain.Cliente;
+import org.example.domain.Hotel;
 import org.example.domain.Reserva;
 
 import java.time.LocalDate;
@@ -14,6 +15,19 @@ public class GestionReservas implements IGestionReservas{
 
     public GestionReservas() {
         this.daoReservas = new DaoReservasImplementacion();
+    }
+    public GestionReservas(Hotel hotel) {
+        this.daoReservas = new DaoReservasImplementacion(hotel);
+    }
+
+    @Override
+    public boolean iniciarSesion(String dni, String contrasenya) {
+        return daoReservas.iniciarSesion(dni,contrasenya);
+    }
+
+    @Override
+    public Cliente clientePorDni(String dni) {
+        return daoReservas.clientePorDni(dni);
     }
 
     @Override

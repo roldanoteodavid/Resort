@@ -1,13 +1,21 @@
 package org.example.ui;
 
+import org.example.dao.DaoHotelFicheros;
 import org.example.service.GestionHotel;
 import org.example.service.GestionReservas;
+import org.example.service.IGestionHotel;
+import org.example.service.IGestionReservas;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GestionarClientes {
-    public static void gestion(){
+    private final IGestionReservas serviciosReservas;
+
+    public GestionarClientes() {
+        this.serviciosReservas = new GestionReservas(DaoHotelFicheros.leerFicheroBinario());
+    }
+    public void gestion(){
         Scanner teclado = new Scanner(System.in);
         GestionReservas gestionReservas = new GestionReservas();
 

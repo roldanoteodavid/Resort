@@ -11,6 +11,14 @@ public class DaoHotelImplementacion implements DaoHotel {
     public DaoHotelImplementacion() {
         this.hotel = new Hotel();
     }
+    public DaoHotelImplementacion(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    @Override
+    public Hotel getHotel() {
+        return hotel;
+    }
 
     @Override
     public boolean anyadirHabitacion(Habitacion habitacion) {

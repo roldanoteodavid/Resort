@@ -6,6 +6,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface DaoReservas {
+    Hotel getHotel();
+    boolean iniciarSesion(String dni, String contrasenya);
     boolean addReserva(Cliente cliente, Reserva reserva);
     boolean modificarContraseña(String dni, String contraseña);
     boolean cancelarReserva(int id);
