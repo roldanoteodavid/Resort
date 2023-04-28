@@ -4,6 +4,7 @@ import org.example.common.Constantes;
 import org.example.dao.DaoHotelFicheros;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MainHotel {
@@ -18,6 +19,12 @@ public class MainHotel {
         boolean fin = false;
         do {
             System.out.println("Introduzca 1 si eres administrador o 2 si eres administrador.");
+            try {
+                int respuesta= teclado.nextInt();
+            } catch (InputMismatchException e){
+                System.out.println("Introduce un numero");
+                fin=true;
+            }
             switch (teclado.nextInt()) {
                 case 1:
                     GestionarClientes clientes = new GestionarClientes();
@@ -26,6 +33,7 @@ public class MainHotel {
                 case 2:
                     GestionarHotel hotel = new GestionarHotel();
                     hotel.gestion();
+                    break;
                 case 3:
                     fin = true;
                     break;
