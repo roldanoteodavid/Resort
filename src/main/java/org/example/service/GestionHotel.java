@@ -28,16 +28,17 @@ public class GestionHotel implements IGestionHotel {
         return daoHotel.comprobarDisponibilidad(date);
     }
 
-    public boolean addReserva(Reserva reserva) {
-        return daoHotel.addReserva(reserva);
+    @Override
+    public boolean addReserva(Reserva reserva, Cliente cliente) {
+        return daoHotel.addReserva(reserva, cliente);
     }
 
     public List<Cliente> verClientes() {
         return daoHotel.verClientes();
     }
 
-    public boolean borrarCliente() {
-        return daoHotel.borrarCliente();
+    public boolean borrarCliente(Cliente cliente) {
+        return daoHotel.borrarCliente(cliente);
     }
 
     public boolean anyadirCliente(Cliente cliente) {
