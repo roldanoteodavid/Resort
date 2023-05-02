@@ -15,6 +15,6 @@ public interface DaoReservas {
     boolean cancelarActividad(int id);
     List<Reserva> verReservas(boolean ascendente);
     Cliente clientePorDni(String dni);
-    boolean moficarReservaFecha(int id, int inquilinos);
+    boolean moficarReservaInquilinos(int id, int inquilinos);
 
 }
