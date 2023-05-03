@@ -20,7 +20,7 @@ public interface IGestionHotel {
     boolean addReserva(Reserva reserva, Cliente cliente);
     List<Cliente> verClientes();
 
-    boolean borrarCliente(Cliente cliente);
+    boolean borrarCliente(String dni); //borrar con el dni
 
     boolean anyadirCliente(Cliente cliente);
 
@@ -34,7 +34,7 @@ public interface IGestionHotel {
 
     boolean anyadirActividad(Actividad actividad);
 
-    boolean borrarActividad(Actividad actividad);
+    boolean borrarActividad(int id);
 
     List<Actividad> listarActividad();
 

@@ -19,7 +19,14 @@ public class GestionarClientes {
         Scanner teclado = new Scanner(System.in);
         GestionReservas gestionReservas = new GestionReservas();
 
+                } while (opcion != 10);
+            } else {
+                System.out.println("Contraseña incorrecta.");
+            }
+
+
     }
+
     public static int mostrarMenu() {
         Scanner teclado = new Scanner(System.in);
         //System.out.println(Constantes.MENU + "\n" + Constantes.OPCION1 + "\n" + Constantes.OPCION2 + "\n" + Constantes.OPCION3 + "\n" + Constantes.OPCION4 + "\n" + Constantes.OPCION5);
@@ -39,4 +46,7 @@ public class GestionarClientes {
         }
         return num;
     }
+
+
+
 }
