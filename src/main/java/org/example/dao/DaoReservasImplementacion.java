@@ -112,20 +112,20 @@ public class DaoReservasImplementacion implements DaoReservas {
     }
 
     @Override
-    public boolean reservarActividad(Actividad actividad) {
+    public boolean reservarActividad(Actividad actividad, Cliente cliente) {
         /*boolean hecho= false;
         List<Actividad> actividades=  hotel.getActividades();
         if (actividades.add(actividad))
             hecho=true;
         hotel.setActividades(actividades);
         return hecho;*/
-        List<Actividad> actividades = hotel.getActividades();
+
+        List<Actividad> actividades = cliente.getActividades();
         boolean hecho = actividades.add(actividad);
         if (hecho) {
-            hotel.setActividades(actividades);
+            cliente.setActividades(actividades);
         }
         return hecho;
-        //La he añadido para reservar tendran que estar relaccionadas las actividades y los clientes;
     }
 
     @Override

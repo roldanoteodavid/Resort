@@ -15,6 +15,8 @@ public @Data class Cliente {
     private List<Reserva> reservas;
     private String pais;
     private String contrasenya;
+
+    private List<Actividad> actividades;
     public Cliente() {
         nacimiento = LocalDate.of(2001, 12, 31);
     }

@@ -18,7 +18,7 @@ public interface IGestionReservas {
 
     boolean cancelarReserva(int id);
 
-    boolean reservarActividad(Actividad actividad);
+    boolean reservarActividad(Actividad actividad, Cliente cliente);
 
     boolean cancelarActividad(int id);
 

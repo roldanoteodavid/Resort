@@ -47,8 +47,8 @@ public class GestionReservas implements IGestionReservas{
     }
 
     @Override
-    public boolean reservarActividad(Actividad actividad) {
-        return daoReservas.reservarActividad(actividad);
+    public boolean reservarActividad(Actividad actividad, Cliente cliente) {
+        return daoReservas.reservarActividad(actividad, cliente);
     }
 
     @Override
