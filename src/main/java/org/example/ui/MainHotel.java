@@ -18,12 +18,12 @@ public class MainHotel {
         }
         boolean fin = false;
         do {
-            System.out.println("Introduzca 1 si eres administrador o 2 si eres administrador.");
+            System.out.println("Introduzca 1 si eres cliente o 2 si eres administrador.");
             try {
-                int respuesta= teclado.nextInt();
-            } catch (InputMismatchException e){
+                int respuesta = teclado.nextInt();
+            } catch (InputMismatchException e) {
                 System.out.println("Introduce un numero");
-                fin=true;
+                fin = true;
             }
             switch (teclado.nextInt()) {
                 case 1:

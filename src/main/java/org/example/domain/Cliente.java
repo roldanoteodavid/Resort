@@ -15,10 +15,20 @@ public @Data class Cliente {
     private List<Reserva> reservas;
     private String pais;
     private String contrasenya;
-
     private List<Actividad> actividades;
     public Cliente() {
         nacimiento = LocalDate.of(2001, 12, 31);
+    }
+
+    public Cliente(String dni, String nombre, LocalDate nacimiento, String telefono, String pais, String contrasenya) throws AlFrancesException{
+        this.dni = dni;
+        this.nombre = nombre;
+        this.nacimiento = nacimiento;
+        this.telefono = telefono;
+        Comprobacion.alFrances(pais);
+        this.pais = pais;
+        this.contrasenya = contrasenya;
+
     }
 
     public Cliente(String dni, String nombre, LocalDate nacimiento, String telefono, List<Reserva> reservas, String pais, String contrasenya) throws AlFrancesException{

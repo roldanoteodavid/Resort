@@ -43,6 +43,15 @@ public class DaoHotelImplementacion implements DaoHotel {
     }
 
     @Override
+    public List<Habitacion> verHabitaciones(boolean ascendente) {
+        List<Habitacion> habitaciones= hotel.getHabitaciones();
+        habitaciones.sort((Comparator<? super Habitacion>) habitaciones);
+        if (!ascendente)
+            ((Comparator<?>) habitaciones).reversed();
+        return habitaciones;
+    }
+
+    @Override
     public boolean comprobarDisponibilidad(LocalDate date) {
         return false;
     }

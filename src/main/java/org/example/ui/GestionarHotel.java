@@ -1,7 +1,9 @@
 package org.example.ui;
 
 import org.example.common.Constantes;
+import org.example.common.TipoException;
 import org.example.dao.DaoHotelFicheros;
+import org.example.domain.Habitacion;
 import org.example.domain.Hotel;
 import org.example.service.GestionHotel;
 import org.example.service.IGestionHotel;
@@ -25,18 +27,17 @@ public class GestionarHotel {
             do {
                 opcion = mostrarMenu();
                 switch (opcion) {
-
                     case 1:
-                        //listarOrdenados(gestionElementos);
+                        listarHabitaciones();
                         break;
                     case 2:
                         //
                         break;
                     case 3:
-                        //modificarElemento(gestionElementos);
+
                         break;
                     case 4:
-                        //eliminarElemento(gestionElementos);
+                        //eliminarElemento();
                         break;
                     case 5:
                         System.out.println("Ha elegido salir.");
@@ -68,5 +69,25 @@ public class GestionarHotel {
             }
         }
         return num;
+    }
+    public static void listarHabitaciones(){
+
+    }
+    public void anyadirHabitacion(){
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Introduzca el número de habitación.");
+        int numero = teclado.nextInt();
+        System.out.println("Introduzca la capacidad de la habitación.");
+        int capacidad = teclado.nextInt();
+        System.out.println("Introduzca el tipo de habitación.");
+        String tipo = teclado.next();
+        Habitacion habitacion = null;
+        try {
+            habitacion = new Habitacion(numero, capacidad, tipo);
+            this.serviciosHotel.anyadirHabitacion(habitacion);
+        } catch (TipoException e) {
+            System.out.println(e.getMessage());
+            //throw new RuntimeException(e);
+        }
     }
 }

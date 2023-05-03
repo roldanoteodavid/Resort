@@ -7,7 +7,7 @@ import org.example.common.TipoException;
 import java.time.LocalDate;
 import java.util.List;
 
-public @Data class Habitacion {
+public @Data class Habitacion implements Comparable<Habitacion>{
     private int numero;
     private int capacidad;
     private int precio;

@@ -21,11 +21,4 @@ public @Data class Actividad {
         this.lugar=lugar;
         this.precio=precio;
     }
-    public Actividad(int id,String nombre,String lugar) throws LugarException {
-        this.id=id;
-        this.nombre=nombre;
-        Comprobacion.lugarOk(lugar);
-        this.lugar=lugar;
-
-    }
 }
