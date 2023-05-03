@@ -114,7 +114,7 @@ public class DaoReservasImplementacion implements DaoReservas {
     @Override
     public boolean reservarActividad(Actividad actividad, Cliente cliente) {
         /*boolean hecho= false;
-        List<Actividad> actividades=  hotel.getActividades();
+        List<Actividad> actividades=  cliente.getActividades();
         if (actividades.add(actividad))
             hecho=true;
         hotel.setActividades(actividades);
@@ -129,7 +129,7 @@ public class DaoReservasImplementacion implements DaoReservas {
     }
 
     @Override
-    public boolean cancelarActividad(int id) {//esto es para eliminar para cancelar habra que meter un LocalDate
+    public boolean cancelarActividad(int id, Cliente cliente) {
         /*boolean hecho = false;
         List<Actividad> actividades = hotel.getActividades();
         for (int i = 0; i < hotel.getActividades().size(); i++) {
@@ -138,10 +138,10 @@ public class DaoReservasImplementacion implements DaoReservas {
             }
         }
         return hecho;*/
-        List<Actividad> actividades = hotel.getActividades();
+        List<Actividad> actividades = cliente.getActividades();
         boolean hecho = actividades.removeIf(a -> ((Integer) id).equals(a.getId()));
         if (hecho) {
-            hotel.setActividades(actividades);
+            cliente.setActividades(actividades);
         }
         return hecho;
     }

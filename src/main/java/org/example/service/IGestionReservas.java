@@ -20,7 +20,7 @@ public interface IGestionReservas {
 
     boolean reservarActividad(Actividad actividad, Cliente cliente);
 
-    boolean cancelarActividad(int id);
+    boolean cancelarActividad(int id, Cliente cliente);
 
     List<Reserva> verReservas(boolean ascendente);
 

@@ -12,7 +12,7 @@ public interface DaoReservas {
     boolean modificarContrasenya(String dni, String contrasenya);
     boolean cancelarReserva(int id);
     boolean reservarActividad(Actividad actividad, Cliente cliente);
-    boolean cancelarActividad(int id);
+    boolean cancelarActividad(int id, Cliente cliente);
     List<Reserva> verReservas(boolean ascendente);
     Cliente clientePorDni(String dni);
     boolean moficarReservaInquilinos(int id, int inquilinos);

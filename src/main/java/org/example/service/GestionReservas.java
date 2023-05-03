@@ -52,8 +52,8 @@ public class GestionReservas implements IGestionReservas{
     }
 
     @Override
-    public boolean cancelarActividad(int id) {
-        return daoReservas.cancelarActividad(id);
+    public boolean cancelarActividad(int id, Cliente cliente) {
+        return daoReservas.cancelarActividad(id, cliente);
     }
 
     @Override
