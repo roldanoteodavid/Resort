@@ -42,6 +42,7 @@ public @Data class Cliente {
         this.contrasenya = contrasenya;
     }
 
+
     public Cliente(String nombre, String pais) throws AlFrancesException{
         this.dni = "123213";
         this.nombre = nombre;

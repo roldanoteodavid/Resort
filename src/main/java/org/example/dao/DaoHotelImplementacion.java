@@ -4,6 +4,7 @@ import org.example.domain.*;
 
 import java.time.LocalDate;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -100,10 +101,28 @@ public class DaoHotelImplementacion implements DaoHotel {
         return hotel.getClientes().add(cliente);
     }
 
-    @Override
-    public List<Reserva> listarReservasFecha(boolean ascendente) {
-        return null;
+
+    public List<Reserva> listarReservasFecha(boolean ascendente, Cliente cliente) {
+        List<Reserva> reservas = cliente.getReservas();
+
+        Comparator<Reserva> comparator = new Comparator<Reserva>() {
+            @Override
+            public int compare(Reserva r1, Reserva r2) {
+                int numero;
+                if (ascendente) {
+                    numero= r1.getEntrada().compareTo(r2.getEntrada());
+                } else {
+                   numero= r2.getEntrada().compareTo(r1.getEntrada());
+                }
+                return numero;
+            }
+        };
+
+        Collections.sort(reservas, comparator);
+
+        return reservas;
     }
+
 
     @Override
     public List<Habitacion> listarHabitacionesOcupadas(LocalDate fecha) {

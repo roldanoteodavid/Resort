@@ -5,6 +5,7 @@ import org.example.common.AlFrancesException;
 import org.example.common.LugarException;
 import org.example.common.TipoException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public @Data class Hotel {

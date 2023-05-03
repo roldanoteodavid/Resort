@@ -26,7 +26,7 @@ public interface IGestionHotel {
 
     boolean modificarNombreCliente(String dni, String nombre);
 
-    List<Reserva> listarReservasFecha(boolean ascendente);
+    List<Reserva> listarReservasFecha(boolean ascendente, Cliente cliente);
 
     List<Habitacion> listarHabitacionesOcupadas(LocalDate fecha);
 

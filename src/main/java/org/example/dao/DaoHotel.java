@@ -10,6 +10,7 @@ public interface DaoHotel {
     void setHotel(Hotel hotel);
     boolean anyadirHabitacion(Habitacion habitacion);
     boolean borrarHabitacion(int numeroHab);
+    List<Habitacion> verHabitaciones(boolean ascendente);
     boolean comprobarDisponibilidad(LocalDate date);
     boolean addReserva(Reserva reserva, Cliente cliente);
     List<Cliente> verClientes();
@@ -17,7 +18,7 @@ public interface DaoHotel {
     boolean anyadirCliente(Cliente cliente);
     boolean modificarNombreCliente(String DNI, String nombre);
     boolean modificarContrasenyaCliente(String DNI, String contrasenya); //cambiar
-    List<Reserva> listarReservasFecha(boolean ascendente);
+    List<Reserva> listarReservasFecha(boolean ascendente, Cliente cliente);
     List<Habitacion> listarHabitacionesOcupadas(LocalDate fecha);//pablo
     boolean isEmptyReservasList();
     boolean anyadirActividad(Actividad actividad);

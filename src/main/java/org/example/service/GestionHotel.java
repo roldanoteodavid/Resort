@@ -49,8 +49,8 @@ public class GestionHotel implements IGestionHotel {
         return daoHotel.modificarNombreCliente(dni, nombre);
     }
 
-    public List<Reserva> listarReservasFecha(boolean ascendente) {
-        return daoHotel.listarReservasFecha(ascendente);
+    public List<Reserva> listarReservasFecha(boolean ascendente, Cliente cliente) {
+        return daoHotel.listarReservasFecha(ascendente, cliente);
     }
 
     public List<Habitacion> listarHabitacionesOcupadas(LocalDate fecha) {
