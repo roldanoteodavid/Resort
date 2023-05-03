@@ -37,8 +37,8 @@ public class GestionHotel implements IGestionHotel {
         return daoHotel.verClientes();
     }
 
-    public boolean borrarCliente(Cliente cliente) {
-        return daoHotel.borrarCliente(cliente);
+    public boolean borrarCliente(String dni) {
+        return daoHotel.borrarCliente(dni);
     }
 
     public boolean anyadirCliente(Cliente cliente) {
@@ -65,8 +65,8 @@ public class GestionHotel implements IGestionHotel {
         return daoHotel.anyadirActividad(actividad);
     }
 
-    public boolean borrarActividad(Actividad actividad) {
-        return daoHotel.borrarActividad(actividad);
+    public boolean borrarActividad(int id) {
+        return daoHotel.borrarActividad(id);
     }
 
     public List<Actividad> listarActividad() {

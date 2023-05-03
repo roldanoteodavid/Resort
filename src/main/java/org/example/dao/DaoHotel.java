@@ -14,7 +14,7 @@ public interface DaoHotel {
     boolean comprobarDisponibilidad(LocalDate date);
     boolean addReserva(Reserva reserva, Cliente cliente);
     List<Cliente> verClientes();
-    boolean borrarCliente(Cliente cliente);
+    boolean borrarCliente(String dni);
     boolean anyadirCliente(Cliente cliente);
     boolean modificarNombreCliente(String DNI, String nombre);
     boolean modificarContrasenyaCliente(String DNI, String contrasenya); //cambiar
@@ -22,6 +22,6 @@ public interface DaoHotel {
     List<Habitacion> listarHabitacionesOcupadas(LocalDate fecha);//pablo
     boolean isEmptyReservasList();
     boolean anyadirActividad(Actividad actividad);
-    boolean borrarActividad(Actividad actividad);
+    boolean borrarActividad(int id);
     List<Actividad> listarActividad();
 }

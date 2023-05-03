@@ -1,6 +1,7 @@
 package org.example.ui;
 
 import org.example.dao.DaoHotelFicheros;
+import org.example.domain.Cliente;
 import org.example.service.GestionHotel;
 import org.example.service.GestionReservas;
 import org.example.service.IGestionHotel;
@@ -16,8 +17,49 @@ public class GestionarClientes {
         this.serviciosReservas = new GestionReservas(DaoHotelFicheros.leerFicheroBinario());
     }
     public void gestion(){
-        Scanner teclado = new Scanner(System.in);
-        GestionReservas gestionReservas = new GestionReservas();
+            Scanner teclado = new Scanner(System.in);
+            System.out.println("Introduzca su usuario");
+            Cliente cliente= serviciosReservas.clientePorDni(dni);
+            System.out.println("Introduzca contraseña.");
+            if (teclado.nextLine().equals(pass)) {
+                System.out.println("Contraseña correcta.");
+                int opcion = 0;
+                do {
+                    opcion = mostrarMenu();
+                    switch (opcion) {
+                        case 1:
+                            listarHabitaciones();
+                            break;
+                        case 2:
+                            anyadirHabitacion();
+                            break;
+                        case 3:
+                            borrarHabitacion();
+                            break;
+                        case 4:
+                            comprobarDisponibilidad();
+                            break;
+                        case 5:
+                            verClientes();
+                            break;
+                        case 6:
+                            //comprobarDisponibilidad();
+                            break;
+                        case 7:
+                            //comprobarDisponibilidad();
+                            break;
+                        case 8:
+                            //comprobarDisponibilidad();
+                            break;
+                        case 9:
+                            //comprobarDisponibilidad();
+                            break;
+                        case 10:
+                            System.out.println("Ha elegido salir.");
+                            break;
+                        default:
+                            System.out.println("Introduzca una opción válida.");
+                    }
 
                 } while (opcion != 10);
             } else {

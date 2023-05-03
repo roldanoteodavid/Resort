@@ -68,8 +68,8 @@ public class DaoHotelImplementacion implements DaoHotel {
     }
 
     @Override
-    public boolean borrarCliente(Cliente cliente) {
-        return hotel.getClientes().remove(cliente);
+    public boolean borrarCliente(String dni) {
+        return hotel.getClientes().removeIf(cliente -> (dni).equalsIgnoreCase(cliente.getDni()));
     }
 
     @Override
@@ -159,21 +159,19 @@ public class DaoHotelImplementacion implements DaoHotel {
     }
 
     @Override
-    public boolean borrarActividad(Actividad actividad) {
+    public boolean borrarActividad(int id) {
         /*boolean borrar = false;
         List<Actividad> actividades =hotel.getActividades();
-        if (actividades.remove(actividad)) {
-            borrar= true;
+        for (int i = 0; i < actividades.size(); i++) {
+            if (((Integer) id).equals(actividades.get(i).getId())) {
+                actividades.remove(actividades.get(i));
+                borrar= true;
+            }
         }
         hotel.setActividades(actividades);
         return borrar;*/
-        return Optional.ofNullable(hotel.getActividades())
-                .map(lista -> {
-                    boolean borrar = lista.remove(actividad);
-                    hotel.setActividades(lista);
-                    return borrar;
-                })
-                .orElse(false);
+        return hotel.getActividades()
+                .removeIf(actividad -> ((Integer) id).equals(actividad.getId()));
     }
 
     @Override
