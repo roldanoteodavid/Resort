@@ -1,5 +1,6 @@
 package org.example.ui;
 
+import com.sun.source.tree.IfTree;
 import org.example.dao.DaoHotelFicheros;
 import org.example.domain.Cliente;
 import org.example.service.GestionHotel;
@@ -92,5 +93,17 @@ public class GestionarClientes {
         return num;
     }
 
+    public void anyadirReserva(){
+        System.out.println("Introduce el id");
+        //serviciosReservas.addReserva(cliente,)
+    }
+
+    public static void modificarContrasenya(){
+
+    }
+
+    public static void cancelarReserva(){
+
+    }
 
 }

@@ -10,7 +10,7 @@ public interface DaoHotel {
     void setHotel(Hotel hotel);
     boolean anyadirHabitacion(Habitacion habitacion);
     boolean borrarHabitacion(int numeroHab);
-    List<Habitacion> verHabitaciones(boolean ascendente);
+    List<Habitacion> listarHabitaciones(boolean ascendente);
     boolean comprobarDisponibilidad(LocalDate date);
     boolean addReserva(Reserva reserva, Cliente cliente);
     List<Cliente> verClientes();

@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import lombok.Data;
 import org.example.domain.*;
 
 import java.time.LocalDate;
@@ -7,7 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-
+@Data
 public class DaoHotelImplementacion implements DaoHotel {
     protected final Hotel hotel;
 
@@ -44,13 +45,14 @@ public class DaoHotelImplementacion implements DaoHotel {
     }
 
     @Override
-    public List<Habitacion> verHabitaciones(boolean ascendente) {
+    public List<Habitacion> listarHabitaciones(boolean ascendente) {
         List<Habitacion> habitaciones= hotel.getHabitaciones();
         habitaciones.sort((Comparator<? super Habitacion>) habitaciones);
         if (!ascendente)
             ((Comparator<?>) habitaciones).reversed();
         return habitaciones;
     }
+
 
     @Override
     public boolean comprobarDisponibilidad(LocalDate date) {

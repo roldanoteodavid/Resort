@@ -1,5 +1,6 @@
 package org.example.service;
 
+import lombok.Data;
 import org.example.dao.DaoHotelFicheros;
 import org.example.dao.DaoReservas;
 import org.example.dao.DaoReservasImplementacion;
@@ -11,7 +12,7 @@ import org.example.domain.Reserva;
 import java.time.LocalDate;
 import java.util.List;
 
-public class GestionReservas implements IGestionReservas{
+public @Data class GestionReservas implements IGestionReservas{
     private final DaoReservas daoReservas;
 
     public GestionReservas() {

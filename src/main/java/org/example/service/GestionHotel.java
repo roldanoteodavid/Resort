@@ -1,5 +1,6 @@
 package org.example.service;
 
+import lombok.Data;
 import org.example.dao.DaoHotel;
 import org.example.dao.DaoHotelFicheros;
 import org.example.dao.DaoHotelImplementacion;
@@ -9,7 +10,7 @@ import org.example.domain.*;
 import java.time.LocalDate;
 import java.util.List;
 
-public class GestionHotel implements IGestionHotel {
+public @Data class GestionHotel implements IGestionHotel {
     private final DaoHotel daoHotel;
 
     public GestionHotel(Hotel hotel) {
@@ -22,6 +23,10 @@ public class GestionHotel implements IGestionHotel {
 
     public boolean borrarHabitacion(int numeroHab) {
         return daoHotel.borrarHabitacion(numeroHab);
+    }
+
+    public List<Habitacion> listarHabitaciones(boolean ascendente){
+        return daoHotel.listarHabitaciones(ascendente);
     }
 
     public boolean comprobarDisponibilidad(LocalDate date) {

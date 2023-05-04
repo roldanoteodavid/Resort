@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import lombok.Data;
 import org.example.domain.Actividad;
 import org.example.domain.Cliente;
 import org.example.domain.Hotel;
@@ -12,7 +13,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class DaoReservasImplementacion implements DaoReservas {
+public @Data class DaoReservasImplementacion implements DaoReservas {
     protected final Hotel hotel;
 
     public DaoReservasImplementacion() {

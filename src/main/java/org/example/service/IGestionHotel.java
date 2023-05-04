@@ -14,6 +14,8 @@ public interface IGestionHotel {
 
     boolean borrarHabitacion(int numeroHab);
 
+    List<Habitacion> listarHabitaciones(boolean ascendente);
+
     boolean comprobarDisponibilidad(LocalDate date);
 
 
@@ -21,7 +23,7 @@ public interface IGestionHotel {
 
     List<Cliente> verClientes(); //booleano
 
-    boolean borrarCliente(String dni); //borrar con el dni
+    boolean borrarCliente(String dni);
 
     boolean anyadirCliente(Cliente cliente);
 

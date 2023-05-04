@@ -24,18 +24,24 @@ public @Data class Habitacion implements Comparable<Habitacion>, Serializable {
         this.precio = precioHabitacion(tipo);
     }
 
+    public void fechasOcupadas(LocalDate entrada, LocalDate salida){
+        List<LocalDate> aux = null;
+
+
+    }
+
     //quad, doble, king;
     public int precioHabitacion(String tipo){
         int precio=0;
         if (tipo.equalsIgnoreCase("king")){
             precio=180;
-            setPrecio(precio);
+            //setPrecio(precio);
         } else if (tipo.equalsIgnoreCase("doble")) {
             precio=120;
-            setPrecio(precio);
+            //setPrecio(precio);
         } else if (tipo.equalsIgnoreCase("quad")) {
             precio=140;
-            setPrecio(precio);
+            //setPrecio(precio);
         }
         return precio;
     }
