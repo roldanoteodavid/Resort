@@ -4,11 +4,12 @@ import lombok.Data;
 import org.example.common.Comprobacion;
 import org.example.common.TipoException;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
 import java.util.List;
 
-public @Data class Habitacion implements Comparable<Habitacion>{
+public @Data class Habitacion implements Comparable<Habitacion>, Serializable {
     private int numero;
     private int capacidad;
     private int precio;

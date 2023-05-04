@@ -2,10 +2,11 @@ package org.example.domain;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public @Data class Reserva {
+public @Data class Reserva implements Serializable {
     private int id;
     private LocalDate entrada;
     private LocalDate salida;

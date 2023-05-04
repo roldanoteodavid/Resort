@@ -4,10 +4,11 @@ import lombok.Data;
 import org.example.common.AlFrancesException;
 import org.example.common.Comprobacion;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public @Data class Cliente {
+public @Data class Cliente implements Serializable {
     private String dni;
     private String nombre;
     private LocalDate nacimiento;

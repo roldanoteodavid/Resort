@@ -14,8 +14,16 @@ public class DaoHotelFicheros {
         File fichero2 = new File(FICHEROB);
         /*if (!fichero1.exists())
             fichero1.createNewFile();*/
-        if (!fichero2.exists())
+        if (!fichero2.exists()){
             fichero2.createNewFile();
+            Hotel hotel = new Hotel();
+            try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(FICHEROB))) {
+                os.writeObject(hotel);
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+                java.util.logging.Logger.getLogger(DaoHotelFicheros.class.getName()).log(java.util.logging.Level.SEVERE, ex.getMessage(), ex);
+            }
+        }
 
     }
     public static Hotel leerFicheroBinario() {

@@ -5,22 +5,27 @@ import org.example.common.AlFrancesException;
 import org.example.common.LugarException;
 import org.example.common.TipoException;
 
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
-public @Data class Hotel {
+public @Data class Hotel implements Serializable {
     private List<Actividad> actividades;
     private List<Habitacion> habitaciones;
     private List<Cliente> clientes;
 
     public Hotel() {
+        actividades = new ArrayList<>();
+        habitaciones = new ArrayList<>();
+        clientes = new ArrayList<>();
         try {
             Actividad act1 = new Actividad(1, "escalada", "rocodromo", 15);
             Actividad act2 = new Actividad(2, "natación", "piscina", 10);
             Actividad act3 = new Actividad(3, "badminton", "playa", 12);
             Actividad act4 = new Actividad(4, "yoga", "gimnasio", 10);
             Actividad act5 = new Actividad(5, "aquagym", "piscina", 20);
-            Actividad act6 = new Actividad(6, "rapel", "escalada", 25);
+            Actividad act6 = new Actividad(6, "rapel", "rocodromo", 25);
             actividades.add(act1);
             actividades.add(act2);
             actividades.add(act3);
@@ -53,4 +58,5 @@ public @Data class Hotel {
             throw new RuntimeException(e);
         }
     }
+
 }

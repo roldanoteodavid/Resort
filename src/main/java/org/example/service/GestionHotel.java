@@ -69,7 +69,7 @@ public class GestionHotel implements IGestionHotel {
         return daoHotel.borrarActividad(id);
     }
 
-    public List<Actividad> listarActividad() {
+    public List<Actividad> listarActividad(boolean ascendente) {
         return daoHotel.listarActividad();
     }
 

@@ -4,10 +4,11 @@ import lombok.Data;
 import org.example.common.Comprobacion;
 import org.example.common.LugarException;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public @Data class Actividad {
+public @Data class Actividad implements Serializable {
     private int id;
     private String nombre;
     private String lugar;

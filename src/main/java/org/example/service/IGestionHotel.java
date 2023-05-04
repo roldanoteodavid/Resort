@@ -18,7 +18,8 @@ public interface IGestionHotel {
 
 
     boolean addReserva(Reserva reserva, Cliente cliente);
-    List<Cliente> verClientes();
+
+    List<Cliente> verClientes(); //booleano
 
     boolean borrarCliente(String dni); //borrar con el dni
 
@@ -26,17 +27,17 @@ public interface IGestionHotel {
 
     boolean modificarNombreCliente(String dni, String nombre);
 
-    List<Reserva> listarReservasFecha(boolean ascendente, Cliente cliente);
+    List<Reserva> listarReservasFecha(boolean ascendente, Cliente cliente); //por dni
 
     List<Habitacion> listarHabitacionesOcupadas(LocalDate fecha);
 
-    boolean isEmptyReservasList();
+    boolean isEmptyReservasList(); //borrar?
 
     boolean anyadirActividad(Actividad actividad);
 
     boolean borrarActividad(int id);
 
-    List<Actividad> listarActividad();
+    List<Actividad> listarActividad(boolean ascendente); //booleano
 
     boolean escribirFicheroBinario();
 

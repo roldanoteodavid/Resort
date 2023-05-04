@@ -10,6 +10,7 @@ import org.example.domain.Hotel;
 import org.example.service.GestionHotel;
 import org.example.service.IGestionHotel;
 
+import javax.imageio.plugins.tiff.FaxTIFFTagSet;
 import javax.swing.*;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
@@ -48,7 +49,7 @@ public class GestionarHotel {
                         verClientes();
                         break;
                     case 6:
-                        //comprobarDisponibilidad();
+                        listarActividades();
                         break;
                     case 7:
                         //comprobarDisponibilidad();
@@ -92,8 +93,27 @@ public class GestionarHotel {
         return num;
     }
 
-    public static void listarHabitaciones() {
-
+    public void listarHabitaciones() {
+        Scanner teclado = new Scanner(System.in);
+        boolean ascendente = true;
+        System.out.println("Introduzca 1 si desea ver la lista ascendente o 2 para descendente.");
+        if (teclado.nextInt() == 1) {
+            ascendente = true;
+        } else if (teclado.nextInt() == 2) {
+            ascendente = false;
+        }
+        System.out.println(serviciosHotel.listarHabitaciones(ascendente));
+    }
+    public void listarActividades() {
+        Scanner teclado = new Scanner(System.in);
+        boolean ascendente = true;
+        System.out.println("Introduzca 1 si desea ver la lista ascendente o 2 para descendente.");
+        if (teclado.nextInt() == 1) {
+            ascendente = true;
+        } else if (teclado.nextInt() == 2) {
+            ascendente = false;
+        }
+        System.out.println(serviciosHotel.listarActividad(ascendente));
     }
 
     public void anyadirHabitacion() {
@@ -148,13 +168,14 @@ public class GestionarHotel {
     public void borrarCliente() {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Introduzca el dni del cliente que desea borrar.");
-        if (serviciosHotel.borrarCliente(teclado.nextInt())) {
+        if (serviciosHotel.borrarCliente(teclado.nextLine())) {
             System.out.println("Cliente borrado");
-        }else {
+        } else {
             System.out.println("Error al eliminar el cliente.");
         }
     }
-    public void anyadirActividad(){
+
+    public void anyadirActividad() {
         Scanner teclado = new Scanner(System.in);
         System.out.println("Introduzca el id de la actividad");
         int id = teclado.nextInt();
@@ -165,14 +186,24 @@ public class GestionarHotel {
         System.out.println("Introduzca el precio de la actividad.");
         int precio = teclado.nextInt();
         try {
-            if (serviciosHotel.anyadirActividad(new Actividad(id, nombre, lugar, precio))){
+            if (serviciosHotel.anyadirActividad(new Actividad(id, nombre, lugar, precio))) {
                 System.out.println("Actividad añadida.");
-            }else {
+            } else {
                 System.out.println("Error al añadir la actividad.");
             }
         } catch (LugarException e) {
             System.out.println(e.getMessage());
             //throw new RuntimeException(e);
+        }
+    }
+
+    public void borrarActividad() {
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Introduzca el id de la actividad que desea borrar");
+        if (serviciosHotel.borrarActividad(teclado.nextInt())) {
+            System.out.println("Actividad borrada.");
+        } else {
+            System.out.println("Error al eliminar la actividad.");
         }
     }
 }
