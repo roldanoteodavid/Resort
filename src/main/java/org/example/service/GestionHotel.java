@@ -34,8 +34,13 @@ public class GestionHotel implements IGestionHotel {
     }
 
     @Override
-    public boolean addReserva(Reserva reserva, Cliente cliente) {
-        return daoHotel.addReserva(reserva, cliente);
+    public boolean addReserva(Reserva reserva, String dni) {
+        return daoHotel.addReserva(reserva, dni);
+    }
+
+    @Override
+    public List<Cliente> verClientes(boolean ascendente) {
+        return daoHotel.verClientes(ascendente);
     }
 
     public boolean borrarCliente(String dni) {

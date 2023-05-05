@@ -51,7 +51,7 @@ public class DaoHotelFicheros {
 
     /*public static Hotel leerFicheroBinario() {
         Hotel auxiliar = null;
-        try (ObjectInputStream is = new ObjectInputStream(new FileInputStream(FICHEROB))) {
+        try (ObjectInputStream is = new ObjectInputStream(new FileInputStream((File) Files.lines(Paths.get(Configuration.getInstance().getProperty("pathLista")))))) {
             auxiliar = (Hotel) is.readObject();
 
         } catch (IOException | ClassNotFoundException ex) {
@@ -63,7 +63,7 @@ public class DaoHotelFicheros {
 
     public static boolean escribirFicheroBinario(Hotel hotel) {
         boolean escrito = false;
-        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(FICHEROB))) {
+        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream((File) Files.lines(Paths.get(Configuration.getInstance().getProperty("pathLista")))))) {
             os.writeObject(hotel);
             escrito = true;
         } catch (IOException ex) {
@@ -71,5 +71,7 @@ public class DaoHotelFicheros {
             java.util.logging.Logger.getLogger(DaoHotelFicheros.class.getName()).log(java.util.logging.Level.SEVERE, ex.getMessage(), ex);
         }
         return escrito;
-    }
+    }*/
+
+
 }

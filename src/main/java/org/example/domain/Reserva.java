@@ -13,14 +13,16 @@ public @Data class Reserva implements Serializable {
     private String dnicliente;
     private int costo;
     private int inquilinos;
-    private List<Integer> habitaciones;
+    private Habitacion habitacion;
 
-    public Reserva(LocalDate entrada, LocalDate salida, String dnicliente, int costo, int inquilinos, List<Integer> habitaciones) {
+    public Reserva(LocalDate entrada, LocalDate salida, String dnicliente, int costo, int inquilinos, Habitacion habitacion) {
         this.entrada = entrada;
         this.salida = salida;
         this.dnicliente = dnicliente;
         this.costo = costo;
         this.inquilinos = inquilinos;
-        this.habitaciones = habitaciones;
+        this.habitacion = habitacion;
     }
+
+    //
 }

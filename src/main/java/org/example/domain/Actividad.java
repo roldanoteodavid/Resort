@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public @Data class Actividad implements Serializable {
+public @Data class Actividad implements Serializable, Comparable<Actividad> {
     private int id;
     private String nombre;
     private String lugar;
@@ -21,5 +21,9 @@ public @Data class Actividad implements Serializable {
         Comprobacion.lugarOk(lugar);
         this.lugar=lugar;
         this.precio=precio;
+    }
+    @Override
+    public int compareTo(Actividad o) {
+        return Integer.compare(id,o.id);
     }
 }

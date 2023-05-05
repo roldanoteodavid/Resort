@@ -12,8 +12,8 @@ public interface DaoHotel {
     boolean borrarHabitacion(int numeroHab);
     List<Habitacion> listarHabitaciones(boolean ascendente);
     boolean comprobarDisponibilidad(LocalDate date);
-    boolean addReserva(Reserva reserva, Cliente cliente);
-    List<Cliente> verClientes();
+    boolean addReserva(Reserva reserva, String dni);
+    List<Cliente> verClientes(boolean ascendente);
     boolean borrarCliente(String dni);
     boolean anyadirCliente(Cliente cliente);
     boolean modificarNombreCliente(String DNI, String nombre);

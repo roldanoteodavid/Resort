@@ -24,10 +24,34 @@ public @Data class Habitacion implements Comparable<Habitacion>, Serializable {
         this.precio = precioHabitacion(tipo);
     }
 
-    public void fechasOcupadas(LocalDate entrada, LocalDate salida){
+    public void anyadirFechasOcupadas(LocalDate entrada, LocalDate salida){
+        boolean fin=false;
+        for (int i = 0; !fin ; i++) {
+            fechasocupadas.add(entrada.plusDays(i));
+            if (entrada.plusDays(i).equals(salida)){
+                fin=true;
+            }
+        }
+    }
+
+    public boolean estanOcupadas(LocalDate entrada, LocalDate salida){
+        boolean ocupada = false;
         List<LocalDate> aux = null;
-
-
+        boolean fin = false;
+        for (int i = 0; !fin; i++) {
+            aux.add(entrada.plusDays(i));
+            if (entrada.plusDays(i).equals(salida)){
+                fin=true;
+            }
+        }
+        for (int i = 0; i < fechasocupadas.size(); i++) {
+            for (int j = 0; j < aux.size(); j++) {
+                if (fechasocupadas.get(i).equals(aux.get(j))){
+                    ocupada=true;
+                }
+            }
+        }
+        return ocupada;
     }
 
     //quad, doble, king;
