@@ -24,53 +24,55 @@ public class GestionarClientes {
         System.out.println("Introduzca su usuario");
         String dni = teclado.nextLine();
         System.out.println("Introduzca la contraseña");
-        if (serviciosReservas.iniciarSesion(dni,teclado.nextLine())) {
-            System.out.println("Acceso concedido.");
-            cliente = serviciosReservas.clientePorDni(dni);
-            int opcion = 0;
-            do {
-                opcion = mostrarMenu();
-                switch (opcion) {
-                    case 1:
-                        anyadirReserva();
-                        break;
-                    case 2:
-                        modificarContrasenya();
-                        break;
-                    case 3:
-                        cancelarReserva();
-                        break;
-                    case 4:
-                        //reservarActividad();
-                        break;
-                    case 5:
-                        //verClientes();
-                        break;
-                    case 6:
-                        //comprobarDisponibilidad();
-                        break;
-                    case 7:
-                        //comprobarDisponibilidad();
-                        break;
-                    case 8:
-                        //comprobarDisponibilidad();
-                        break;
-                    case 9:
-                        //comprobarDisponibilidad();
-                        break;
-                    case 10:
-                        System.out.println("Ha elegido salir.");
-                        break;
-                    default:
-                        System.out.println("Introduzca una opción válida.");
-                }
+        boolean entrar= false;
+        while(!entrar){
+            if (serviciosReservas.iniciarSesion(dni,teclado.nextLine())) {
+                entrar= true;
+                System.out.println("Acceso concedido.");
+                cliente = serviciosReservas.clientePorDni(dni);
+                int opcion = 0;
+                do {
+                    opcion = mostrarMenu();
+                    switch (opcion) {
+                        case 1:
+                            anyadirReserva();
+                            break;
+                        case 2:
+                            modificarContrasenya();
+                            break;
+                        case 3:
+                            cancelarReserva();
+                            break;
+                        case 4:
+                            //reservarActividad();
+                            break;
+                        case 5:
+                            //verClientes();
+                            break;
+                        case 6:
+                            //comprobarDisponibilidad();
+                            break;
+                        case 7:
+                            //comprobarDisponibilidad();
+                            break;
+                        case 8:
+                            //comprobarDisponibilidad();
+                            break;
+                        case 9:
+                            //comprobarDisponibilidad();
+                            break;
+                        case 10:
+                            System.out.println("Ha elegido salir.");
+                            break;
+                        default:
+                            System.out.println("Introduzca una opción válida.");
+                    }
 
-            } while (opcion != 10);
-        } else {
-            System.out.println("Contraseña o usuario incorrectos.");
+                } while (opcion != 10);
+            } else {
+                System.out.println("Contraseña o usuario incorrectos.");
+            }
         }
-
-
     }
 
     public static int mostrarMenu() {
