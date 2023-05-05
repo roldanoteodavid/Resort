@@ -7,6 +7,7 @@ import java.util.List;
 public interface DaoReservas {
     Hotel getHotel();
     void setHotel(Hotel hotel);
+    boolean anyadirCliente(Cliente cliente);
     boolean iniciarSesion(String dni, String contrasenya);
     boolean addReserva(Cliente cliente, Reserva reserva);
     boolean modificarContrasenya(String dni, String contrasenya);

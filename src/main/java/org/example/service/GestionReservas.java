@@ -12,7 +12,7 @@ import org.example.domain.Reserva;
 import java.time.LocalDate;
 import java.util.List;
 
-public @Data class GestionReservas implements IGestionReservas{
+public class GestionReservas implements IGestionReservas{
     private final DaoReservas daoReservas;
 
     public GestionReservas() {
@@ -20,6 +20,11 @@ public @Data class GestionReservas implements IGestionReservas{
     }
     public GestionReservas(Hotel hotel) {
         this.daoReservas = new DaoReservasImplementacion(hotel);
+    }
+
+    @Override
+    public boolean anyadirCliente(Cliente cliente) {
+        return daoReservas.anyadirCliente(cliente);
     }
 
     @Override

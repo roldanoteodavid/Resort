@@ -1,17 +1,15 @@
 package org.example.ui;
 
-import org.example.common.Constantes;
+import org.example.common.AlFrancesException;
 import org.example.common.LugarException;
 import org.example.common.TipoException;
 import org.example.dao.DaoHotelFicheros;
 import org.example.domain.Actividad;
+import org.example.domain.Cliente;
 import org.example.domain.Habitacion;
-import org.example.domain.Hotel;
 import org.example.service.GestionHotel;
 import org.example.service.IGestionHotel;
 
-import javax.imageio.plugins.tiff.FaxTIFFTagSet;
-import javax.swing.*;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -31,36 +29,73 @@ public class GestionarHotel {
             System.out.println("Contraseña correcta.");
             int opcion = 0;
             do {
+                System.out.println("Introduzca 1 para gestionar los clientes, 2 para gestionar habitaciones y 3 para las actividades.");
                 opcion = mostrarMenu();
                 switch (opcion) {
                     case 1:
-                        listarHabitaciones();
-                        break;
+                        System.out.println("Introduzca 1 para ver la lista de clientes, 2 para añadir un cliente, 3 para borrar un cliente y 4 para salir.");
+                        opcion = mostrarMenu();
+                        switch (opcion){
+                            case 1:
+                                verClientes();
+                                break;
+                            case 2:
+                                anyadirCliente();
+                                break;
+                            case 3:
+                                borrarCliente();
+                                break;
+                            case 4:
+                                System.out.println("Ha elegido salir.");
+                                break;
+                            default:
+                                System.out.println("Introduzca una opción válida.");
+                        }
                     case 2:
+                        System.out.println("Introduzca 1 para ver la lista de habitaciones, 2 para añadir una habitación, 3 para borrar una habitación, 4 para comprobar la disponibilidad y 5 para salir.");
+                        opcion = mostrarMenu();
+                        switch (opcion){
+                            case 1:
+                                verHabitaciones();
+                                break;
+                            case 2:
+                                anyadirHabitacion();
+                                break;
+                            case 3:
+                                borrarHabitacion();
+                                break;
+                            case 4:
+                                comprobarDisponibilidad();
+                                break;
+                            case 5:
+                                System.out.println("Ha elegido salir.");
+                                break;
+                            default:
+                                System.out.println("Introduzca una opción válida.");
+                        }
                         anyadirHabitacion();
                         break;
                     case 3:
-                        borrarHabitacion();
+                        System.out.println("Introduzca 1 para ver la lista de actividades, 2 para añadir una actividad, 3 para borrar una actividad, 4 para salir.");
+                        opcion = mostrarMenu();
+                        switch (opcion){
+                            case 1:
+                                verActividades();
+                                break;
+                            case 2:
+                                anyadirActividad();
+                                break;
+                            case 3:
+                                borrarActividad();
+                                break;
+                            case 4:
+                                System.out.println("Ha elegido salir.");
+                                break;
+                            default:
+                                System.out.println("Introduzca una opción válida.");
+                        }
                         break;
                     case 4:
-                        comprobarDisponibilidad();
-                        break;
-                    case 5:
-                        verClientes();
-                        break;
-                    case 6:
-                        listarActividades();
-                        break;
-                    case 7:
-                        //comprobarDisponibilidad();
-                        break;
-                    case 8:
-                        //comprobarDisponibilidad();
-                        break;
-                    case 9:
-                        //comprobarDisponibilidad();
-                        break;
-                    case 10:
                         System.out.println("Ha elegido salir.");
                         break;
                     default:
@@ -75,7 +110,6 @@ public class GestionarHotel {
 
     public static int mostrarMenu() {
         Scanner teclado = new Scanner(System.in);
-        //System.out.println(Constantes.MENU + "\n" + Constantes.OPCION1 + "\n" + Constantes.OPCION2 + "\n" + Constantes.OPCION3 + "\n" + Constantes.OPCION4 + "\n" + Constantes.OPCION5);
         boolean vuelve = false;
         int num = 0;
         while (!vuelve) {
@@ -113,7 +147,7 @@ public class GestionarHotel {
         } else if (teclado.nextInt() == 2) {
             ascendente = false;
         }
-        System.out.println(serviciosHotel.listarActividad(ascendente));
+        System.out.println(serviciosHotel.listarActividades(ascendente));
     }
 
     public void anyadirHabitacion() {
@@ -161,8 +195,15 @@ public class GestionarHotel {
     }
 
     public void verClientes() {
-        //Scanner teclado = new Scanner(System.in);
-        System.out.println(serviciosHotel.verClientes());
+        Scanner teclado = new Scanner(System.in);
+        boolean ascendente = true;
+        System.out.println("Introduzca 1 si desea ver la lista ascendente o 2 para descendente.");
+        if (teclado.nextInt() == 1) {
+            ascendente = true;
+        } else if (teclado.nextInt() == 2) {
+            ascendente = false;
+        }
+        System.out.println(serviciosHotel.verClientes(ascendente));
     }
 
     public void borrarCliente() {
@@ -205,5 +246,58 @@ public class GestionarHotel {
         } else {
             System.out.println("Error al eliminar la actividad.");
         }
+    }
+
+    public void anyadirCliente(){
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Introduzca el dni del cliente.");
+        String dni = teclado.nextLine();
+        System.out.println("Introduzca el nombre del cliente.");
+        String nombre = teclado.nextLine();
+        System.out.println("Introduzca el teléfono del cliente.");
+        String telefono = teclado.nextLine();
+        System.out.println("Introduzca la contraseña del cliente.");
+        String contrasenya = teclado.nextLine();
+        System.out.println("Introduzca el país del cliente.");
+        String pais = teclado.nextLine();
+        System.out.println("Introduzca el día de nacimiento del cliente.");
+        int dia = teclado.nextInt();
+        System.out.println("Introduzca el mes de nacimiento del cliente.");
+        int mes = teclado.nextInt();
+        System.out.println("Introduzca el año de nacimiento del cliente.");
+        int anyo = teclado.nextInt();
+        try {
+            Cliente cliente = new Cliente(dni, nombre, LocalDate.of(anyo, mes, dia), telefono, pais,contrasenya);
+            if (serviciosHotel.anyadirCliente(cliente)) {
+                System.out.println("Cliente añadido.");
+            } else {
+                System.out.println("Error al añadir el cliente.");
+            }
+        } catch (AlFrancesException e) {
+            System.out.println(e.getMessage());
+            //throw new RuntimeException(e);
+        }
+    }
+    public void verHabitaciones() {
+        Scanner teclado = new Scanner(System.in);
+        boolean ascendente = true;
+        System.out.println("Introduzca 1 si desea ver la lista ascendente o 2 para descendente.");
+        if (teclado.nextInt() == 1) {
+            ascendente = true;
+        } else if (teclado.nextInt() == 2) {
+            ascendente = false;
+        }
+        System.out.println(serviciosHotel.listarHabitaciones(ascendente));
+    }
+    public void verActividades(){
+        Scanner teclado = new Scanner(System.in);
+        boolean ascendente = true;
+        System.out.println("Introduzca 1 si desea ver la lista ascendente o 2 para descendente.");
+        if (teclado.nextInt() == 1) {
+            ascendente = true;
+        } else if (teclado.nextInt() == 2) {
+            ascendente = false;
+        }
+        System.out.println(serviciosHotel.listarActividades(ascendente));
     }
 }

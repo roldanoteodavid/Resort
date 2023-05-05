@@ -36,6 +36,11 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
     }
 
     @Override
+    public boolean anyadirCliente(Cliente cliente) {
+        return hotel.getClientes().add(cliente);
+    }
+
+    @Override
     public boolean iniciarSesion(String dni, String contrasenya) {
         /*
         boolean inicio = false;

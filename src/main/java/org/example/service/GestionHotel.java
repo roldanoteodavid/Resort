@@ -10,7 +10,7 @@ import org.example.domain.*;
 import java.time.LocalDate;
 import java.util.List;
 
-public @Data class GestionHotel implements IGestionHotel {
+public class GestionHotel implements IGestionHotel {
     private final DaoHotel daoHotel;
 
     public GestionHotel(Hotel hotel) {
@@ -25,7 +25,7 @@ public @Data class GestionHotel implements IGestionHotel {
         return daoHotel.borrarHabitacion(numeroHab);
     }
 
-    public List<Habitacion> listarHabitaciones(boolean ascendente){
+    public List<Habitacion> listarHabitaciones(boolean ascendente) {
         return daoHotel.listarHabitaciones(ascendente);
     }
 
@@ -36,10 +36,6 @@ public @Data class GestionHotel implements IGestionHotel {
     @Override
     public boolean addReserva(Reserva reserva, Cliente cliente) {
         return daoHotel.addReserva(reserva, cliente);
-    }
-
-    public List<Cliente> verClientes() {
-        return daoHotel.verClientes();
     }
 
     public boolean borrarCliente(String dni) {
@@ -74,7 +70,7 @@ public @Data class GestionHotel implements IGestionHotel {
         return daoHotel.borrarActividad(id);
     }
 
-    public List<Actividad> listarActividad(boolean ascendente) {
+    public List<Actividad> listarActividades(boolean ascendente) {
         return daoHotel.listarActividad();
     }
 

@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public interface IGestionReservas {
+    boolean anyadirCliente(Cliente cliente);
     boolean iniciarSesion(String dni, String contrasenya);
 
     Cliente clientePorDni(String dni);

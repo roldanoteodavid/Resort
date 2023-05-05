@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+
 @Data
 public class DaoHotelImplementacion implements DaoHotel {
     protected final Hotel hotel;
@@ -15,6 +16,7 @@ public class DaoHotelImplementacion implements DaoHotel {
     public DaoHotelImplementacion() {
         this.hotel = new Hotel();
     }
+
     public DaoHotelImplementacion(Hotel hotel) {
         this.hotel = hotel;
     }
@@ -46,7 +48,7 @@ public class DaoHotelImplementacion implements DaoHotel {
 
     @Override
     public List<Habitacion> listarHabitaciones(boolean ascendente) {
-        List<Habitacion> habitaciones= hotel.getHabitaciones();
+        List<Habitacion> habitaciones = hotel.getHabitaciones();
         habitaciones.sort((Comparator<? super Habitacion>) habitaciones);
         if (!ascendente)
             ((Comparator<?>) habitaciones).reversed();
@@ -60,15 +62,47 @@ public class DaoHotelImplementacion implements DaoHotel {
     }
 
     @Override
-    public boolean addReserva(Reserva reserva, Cliente cliente) {
-        return cliente.getReservas().add(reserva);
+    public boolean addReserva(Reserva reserva, String dni) {
+        /*boolean hecho = false;
+        for (int ç = 0; ç < hotel.getClientes().size(); ç++) {
+            if (hotel.getClientes().get(ç).getDni().equalsIgnoreCase(dni)){
+                hecho= true;
+                List<Reserva> reservas= hotel.getClientes().get(ç).getReservas();
+                reservas.add(reserva);
+                hotel.getClientes().get(ç).setReservas(reservas);
+            }
+        }
+        return hecho*/
+        return hotel.getClientes().stream()
+                .filter(cliente -> cliente.getDni().equalsIgnoreCase(dni))
+                .findFirst()
+                .map(cliente -> {
+                    List<Reserva> reservas = cliente.getReservas();
+                    reservas.add(reserva);
+                    cliente.setReservas(reservas);
+                    return true;
+                })
+                .orElse(false);
     }
 
     @Override
-    public List<Cliente> verClientes() {
-        return hotel.getClientes();
+    public List<Cliente> verClientes(boolean ascendente) {
+        List<Cliente> lista2;
+        lista2 = this.hotel.getClientes();
+        Collections.sort(lista2);
+        if (!ascendente) {
+            Collections.reverse(lista2);
+        }
+        return lista2;
     }
 
+    /*        List<Cliente> clientes= hotel.getClientes();
+            clientes.sort((Comparator<? super Cliente>) clientes);
+            if (!ascendente)
+                ((Comparator<?>) clientes).reversed();
+            return clientes;
+        }
+    */
     @Override
     public boolean borrarCliente(String dni) {
         return hotel.getClientes().removeIf(cliente -> (dni).equalsIgnoreCase(cliente.getDni()));
@@ -81,7 +115,7 @@ public class DaoHotelImplementacion implements DaoHotel {
 
     @Override
     public boolean modificarNombreCliente(String DNI, String nombre) {
-        Cliente cliente= hotel.getClientes()
+        Cliente cliente = hotel.getClientes()
                 .stream()
                 .filter(c -> c.getDni().equals(DNI))
                 .findFirst()
@@ -93,7 +127,7 @@ public class DaoHotelImplementacion implements DaoHotel {
 
     @Override
     public boolean modificarContrasenyaCliente(String DNI, String contrasenya) {
-        Cliente cliente= hotel.getClientes()
+        Cliente cliente = hotel.getClientes()
                 .stream()
                 .filter(c -> c.getDni().equals(DNI))
                 .findFirst()
@@ -112,16 +146,14 @@ public class DaoHotelImplementacion implements DaoHotel {
             public int compare(Reserva r1, Reserva r2) {
                 int numero;
                 if (ascendente) {
-                    numero= r1.getEntrada().compareTo(r2.getEntrada());
+                    numero = r1.getEntrada().compareTo(r2.getEntrada());
                 } else {
-                   numero= r2.getEntrada().compareTo(r1.getEntrada());
+                    numero = r2.getEntrada().compareTo(r1.getEntrada());
                 }
                 return numero;
             }
         };
-
         Collections.sort(reservas, comparator);
-
         return reservas;
     }
 
@@ -178,8 +210,6 @@ public class DaoHotelImplementacion implements DaoHotel {
 
     @Override
     public List<Actividad> listarActividad() {
-        /*List<Actividad> lista=hotel.getActividades();
-        return lista;*/
         return Optional.ofNullable(hotel.getActividades())
                 .orElse(Collections.emptyList());
     }
