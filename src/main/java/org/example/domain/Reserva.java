@@ -24,5 +24,12 @@ public @Data class Reserva implements Serializable {
         this.habitacion = habitacion;
     }
 
+    public Reserva(LocalDate entrada, LocalDate salida, String dnicliente, int inquilinos) {
+        this.entrada = entrada;
+        this.salida = salida;
+        this.dnicliente = dnicliente;
+        this.inquilinos = inquilinos;
+    }
+
     //
 }
