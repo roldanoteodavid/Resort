@@ -128,7 +128,7 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
                actividad= hotel.getActividades().get(i);
             }
         }
-        if (actividad.Disponible(cliente,entrada,salida)){
+        if (actividad.disponible(cliente,entrada,salida)){
             cliente.getActividades().add(actividad);
             hecho=true;
         }

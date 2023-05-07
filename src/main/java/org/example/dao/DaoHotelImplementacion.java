@@ -48,11 +48,18 @@ public class DaoHotelImplementacion implements DaoHotel {
 
     @Override
     public List<Habitacion> listarHabitaciones(boolean ascendente) {
-        List<Habitacion> habitaciones = hotel.getHabitaciones();
+        /*List<Habitacion> habitaciones = hotel.getHabitaciones();
         habitaciones.sort((Comparator<? super Habitacion>) habitaciones);
         if (!ascendente)
             ((Comparator<?>) habitaciones).reversed();
-        return habitaciones;
+        return habitaciones;*/
+        List<Habitacion> lista2;
+        lista2 = this.hotel.getHabitaciones();
+        Collections.sort(lista2);
+        if (!ascendente) {
+            Collections.reverse(lista2);
+        }
+        return lista2;
     }
 
 
@@ -211,8 +218,15 @@ public class DaoHotelImplementacion implements DaoHotel {
     }
 
     @Override
-    public List<Actividad> listarActividad() {
-        return Optional.ofNullable(hotel.getActividades())
-                .orElse(Collections.emptyList());
+    public List<Actividad> listarActividades(boolean ascendente) {
+        List<Actividad> lista2;
+        lista2 = this.hotel.getActividades();
+        Collections.sort(lista2);
+        if (!ascendente) {
+            Collections.reverse(lista2);
+        }
+        return lista2;
+        /*return Optional.ofNullable(hotel.getActividades())
+                .orElse(Collections.emptyList());*/
     }
 }

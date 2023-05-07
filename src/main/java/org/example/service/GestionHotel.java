@@ -1,10 +1,8 @@
 package org.example.service;
 
-import lombok.Data;
 import org.example.dao.DaoHotel;
 import org.example.dao.DaoHotelFicheros;
 import org.example.dao.DaoHotelImplementacion;
-import org.example.dao.DaoReservas;
 import org.example.domain.*;
 
 import java.time.LocalDate;
@@ -15,6 +13,11 @@ public class GestionHotel implements IGestionHotel {
 
     public GestionHotel(Hotel hotel) {
         daoHotel = new DaoHotelImplementacion(hotel);
+    }
+
+    @Override
+    public Hotel getHotel() {
+        return daoHotel.getHotel();
     }
 
     public boolean anyadirHabitacion(Habitacion habitacion) {
@@ -76,7 +79,7 @@ public class GestionHotel implements IGestionHotel {
     }
 
     public List<Actividad> listarActividades(boolean ascendente) {
-        return daoHotel.listarActividad();
+        return daoHotel.listarActividades(ascendente);
     }
 
     @Override
