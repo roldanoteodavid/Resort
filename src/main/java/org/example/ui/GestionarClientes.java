@@ -197,35 +197,34 @@ public class GestionarClientes {
         System.out.println(serviciosReservas.verReservas(ascendente));
     }
 
-    public void modificarReservaFecha() { //FECHAS
+    public void modificarReservaFecha() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce el dia, mes y año de la nueva fecha de llegada");
+        LocalDate entrada= LocalDate.of(sc.nextInt(),sc.nextInt(),sc.nextInt());
+        System.out.println("Introduce el dia, mes y año de la nueva fecha de salida");
+        LocalDate salida= LocalDate.of(sc.nextInt(),sc.nextInt(),sc.nextInt());
+        System.out.println("Introduce el id de la reserva");
+        int id = sc.nextInt();
+        serviciosReservas.modificarReservaFecha(id, entrada, salida);
 
     }
 
     public void anyadirActividad() {
-        Scanner teclado = new Scanner(System.in);
-
+        Scanner sc = new Scanner(System.in);
         System.out.println("Introduzca el id de la actividad");
-        int id = teclado.nextInt();
-        System.out.println("Introduzca el nombre de la actividad");
-        String nombre = teclado.nextLine();
-        System.out.println("Introduzca el lugar donde se va  arealizar la actividad.");
-        String lugar = teclado.nextLine();
-        System.out.println("Introduzca el precio de la actividad.");
-        int precio = teclado.nextInt();
-        try {
-            if (serviciosReservas.reservarActividad(new Actividad(id, nombre, lugar, precio), cliente)) {
-                System.out.println("Actividad añadida.");
-            } else {
-                System.out.println("Error al añadir la actividad.");
-            }
-        } catch (LugarException e) {
-            System.out.println(e.getMessage());
-            //throw new RuntimeException(e);
-        }
+        int id = sc.nextInt();
+        System.out.println("Introduce el dia, mes y año de tu fecha de llegada");
+        LocalDate entrada= LocalDate.of(sc.nextInt(),sc.nextInt(),sc.nextInt());
+        System.out.println("Introduce el dia, mes y año de tu fecha de salida");
+        LocalDate salida= LocalDate.of(sc.nextInt(),sc.nextInt(),sc.nextInt());
+        if (serviciosReservas.reservarActividad(id, entrada, salida, cliente))
+            System.out.println("Actividad reservada cn exito");
     }
 
-    public void cancelarActividad() { //FECHAS
-
+    public void cancelarActividad() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduzca el id de la actividad que deseas cancelar");
+        serviciosReservas.cancelarActividad(sc.nextInt(),cliente);
     }
 
     public void modificarContrasenya() {

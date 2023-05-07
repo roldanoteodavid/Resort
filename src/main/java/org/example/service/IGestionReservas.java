@@ -19,13 +19,13 @@ public interface IGestionReservas {
 
     boolean cancelarReserva(int id);
 
-    boolean reservarActividad(Actividad actividad, Cliente cliente);
+    boolean reservarActividad(int id, LocalDate entrada, LocalDate salida, Cliente cliente);
 
     boolean cancelarActividad(int id, Cliente cliente);
 
     List<Reserva> verReservas(boolean ascendente);
 
-    boolean modificarReservaFecha(String dni, LocalDate fecha);
+    boolean modificarReservaFecha(int id, LocalDate entrada, LocalDate salida);
 
     boolean escribirFicheroBinario();
 

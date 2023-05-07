@@ -26,4 +26,21 @@ public @Data class Actividad implements Serializable, Comparable<Actividad> {
     public int compareTo(Actividad o) {
         return Integer.compare(id,o.id);
     }
+
+    public boolean Disponible(Cliente cliente, LocalDate entrada, LocalDate salida){
+        boolean hay=false;
+        boolean fin = false;
+        for (int i = 0; !fin; i++) {
+            for (int j = 0; j < fechas.size() && !fin; j++) {
+                if (entrada.plusDays(i).equals(fechas.get(j))){
+                    hay=true;
+                    fin=true;
+                }
+            }
+            if (entrada.plusDays(i).equals(salida)){
+                fin=true;
+            }
+        }
+        return hay;
+    }
 }

@@ -2,6 +2,7 @@ package org.example.dao;
 
 import org.example.domain.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface DaoReservas {
@@ -12,10 +13,12 @@ public interface DaoReservas {
     boolean addReserva(Cliente cliente, Reserva reserva);
     boolean modificarContrasenya(String dni, String contrasenya);
     boolean cancelarReserva(int id);
-    boolean reservarActividad(Actividad actividad, Cliente cliente);
+    boolean reservarActividad(int id, LocalDate entrada, LocalDate salida, Cliente cliente);
     boolean cancelarActividad(int id, Cliente cliente);
     List<Reserva> verReservas(boolean ascendente);
     Cliente clientePorDni(String dni);
-    boolean moficarReservaInquilinos(int id, int inquilinos); // borrrar
+    boolean moficarReservaFecha(int id, LocalDate entrada, LocalDate salida); // borrrar
+
+    //boolean modificar
 
 }

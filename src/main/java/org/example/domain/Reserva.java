@@ -31,5 +31,5 @@ public @Data class Reserva implements Serializable {
         this.inquilinos = inquilinos;
     }
 
-    //
+
 }

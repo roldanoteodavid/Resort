@@ -118,19 +118,21 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
     }
 
     @Override
-    public boolean reservarActividad(Actividad actividad, Cliente cliente) {
-        /*boolean hecho= false;
-        List<Actividad> actividades=  cliente.getActividades();
-        if (actividades.add(actividad))
-            hecho=true;
-        hotel.setActividades(actividades);
-        return hecho;*/
-
-        List<Actividad> actividades = cliente.getActividades();
-        boolean hecho = actividades.add(actividad);
-        if (hecho) {
-            cliente.setActividades(actividades);
+    public boolean reservarActividad(int id, LocalDate entrada, LocalDate salida, Cliente cliente) {
+        boolean hecho= false;
+        //LocalDate entrada= null;
+        //LocalDate salida= null;
+        Actividad actividad= null;
+        for (int i = 0; i < hotel.getActividades().size(); i++) {
+            if(((Integer) id).equals(hotel.getActividades().get(i).getId())){
+               actividad= hotel.getActividades().get(i);
+            }
         }
+        if (actividad.Disponible(cliente,entrada,salida)){
+            cliente.getActividades().add(actividad);
+            hecho=true;
+        }
+
         return hecho;
     }
 
@@ -186,7 +188,7 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
 
 
     @Override
-    public boolean moficarReservaInquilinos(int id, int inquilinos) { // Hacemos otra de fecha?
+    public boolean moficarReservaFecha(int id, LocalDate entrada, LocalDate salida) { // Hacemos otra de fecha?
         /*boolean hecho= false;
         for (int i = 0; i < hotel.getClientes().size(); i++) {
             if (hotel.getClientes().get(i).getReservas()!=null){
@@ -205,7 +207,8 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
                 .filter(reserva -> ((Integer) reserva.getId()).equals(Integer.valueOf(id)))
                 .findFirst()
                 .map(reserva -> {
-                    reserva.setInquilinos(inquilinos);
+                    reserva.setEntrada(entrada);
+                    reserva.setSalida(salida);
                     return true;
                 })
                 .orElse(false);

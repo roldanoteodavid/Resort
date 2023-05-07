@@ -53,8 +53,8 @@ public class GestionReservas implements IGestionReservas{
     }
 
     @Override
-    public boolean reservarActividad(Actividad actividad, Cliente cliente) {
-        return daoReservas.reservarActividad(actividad, cliente);
+    public boolean reservarActividad(int id, LocalDate entrada, LocalDate salida, Cliente cliente) {
+        return daoReservas.reservarActividad(id, entrada, salida, cliente);
     }
 
     @Override
@@ -68,8 +68,8 @@ public class GestionReservas implements IGestionReservas{
     }
 
     @Override
-    public boolean modificarReservaFecha(String dni, LocalDate fecha) {
-        return false;
+    public boolean modificarReservaFecha(int id, LocalDate entrada, LocalDate salida) {
+        return daoReservas.moficarReservaFecha(id, entrada, salida);
     }
 
     @Override
