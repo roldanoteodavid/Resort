@@ -49,6 +49,8 @@ public class DaoHotelFicheros {
         return escrito;
     }
 
+
+
     /*public static Hotel leerFicheroBinario() {
         Hotel auxiliar = null;
         try (ObjectInputStream is = new ObjectInputStream(new FileInputStream((File) Files.lines(Paths.get(Configuration.getInstance().getProperty("pathLista")))))) {

@@ -1,11 +1,14 @@
 package org.example.domain;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import lombok.Data;
 import org.example.common.AlFrancesException;
 import org.example.common.LugarException;
 import org.example.common.TipoException;
 
-import java.io.Serializable;
+import java.io.*;
+import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +60,34 @@ public @Data class Hotel implements Serializable {
         } catch (LugarException | TipoException | AlFrancesException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public  void convertirJson(){
+        Gson gson = new Gson();
+        String actividadesJson = gson.toJson(actividades);
+        try (FileWriter fileWriter = new FileWriter("actividades.json")) {
+            fileWriter.write(actividadesJson);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public List<Actividad> leerJson() {
+        Gson gson = new Gson();
+        try {
+            File archivo = new File("actividades.json");
+            if (!archivo.exists()) {
+                archivo.createNewFile();
+                return new ArrayList<>();
+            }
+            try (FileReader fileReader = new FileReader(archivo)) {
+                Type actividadListType = new TypeToken<ArrayList<Actividad>>(){}.getType();
+                actividades = gson.fromJson(fileReader, actividadListType);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return actividades;
     }
 
 }

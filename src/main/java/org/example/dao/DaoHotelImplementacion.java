@@ -113,6 +113,8 @@ public class DaoHotelImplementacion implements DaoHotel {
         return hotel.getClientes().add(cliente);
     }
 
+
+
     @Override
     public boolean modificarNombreCliente(String DNI, String nombre) {
         Cliente cliente = hotel.getClientes()
