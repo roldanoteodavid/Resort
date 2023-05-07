@@ -78,7 +78,7 @@ public @Data class Hotel implements Serializable {
             File archivo = new File("actividades.json");
             if (!archivo.exists()) {
                 archivo.createNewFile();
-                return new ArrayList<>();
+                return actividades;
             }
             try (FileReader fileReader = new FileReader(archivo)) {
                 Type actividadListType = new TypeToken<ArrayList<Actividad>>(){}.getType();
