@@ -16,6 +16,8 @@ import org.example.service.IGestionReservas;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class GestionarClientes {
     private final IGestionReservas serviciosReservas;
@@ -73,8 +75,21 @@ public class GestionarClientes {
         String nombre = teclado.nextLine();
         System.out.println("Introduzca su teléfono.");
         String telefono = teclado.nextLine();
-        System.out.println("Introduzca su contraseña.");
-        String contrasenya = teclado.nextLine();
+        boolean passvalid = false;
+        String contrasenya = null;
+        do {
+            System.out.println("Introduzca su contraseña.");
+            contrasenya = teclado.nextLine();
+            Pattern p = Pattern.compile("^(?=.*[0-9])"
+                    + "(?=.*[a-z])(?=.*[A-Z])"
+                    + "(?=.*[@#$%^&+=])"
+                    + "(?=\\S+$).{8,20}$");
+            Matcher mat = p.matcher(contrasenya);
+            if (mat.matches()) {
+                passvalid = true;
+            }
+
+        } while (!passvalid);
         System.out.println("Introduzca su país.");
         String pais = teclado.nextLine();
         System.out.println("Introduzca su día de nacimiento.");
@@ -164,12 +179,12 @@ public class GestionarClientes {
     public void anyadirReserva() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el dia, mes y año de la llegada");
-        LocalDate entrada= LocalDate.of(sc.nextInt(),sc.nextInt(),sc.nextInt());
+        LocalDate entrada = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
         System.out.println("Introduce el dia, mes y año de la salida");
-        LocalDate salida= LocalDate.of(sc.nextInt(),sc.nextInt(),sc.nextInt());
+        LocalDate salida = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
         System.out.println("Introduce la cantidad de personas");
-        int personas= sc.nextInt();
-        serviciosReservas.addReserva(cliente,new Reserva(entrada,salida,cliente.getDni(),personas));
+        int personas = sc.nextInt();
+        serviciosReservas.addReserva(cliente, new Reserva(entrada, salida, cliente.getDni(), personas));
     }
 
     public void cancelarReserva() {
@@ -200,9 +215,9 @@ public class GestionarClientes {
     public void modificarReservaFecha() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce el dia, mes y año de la nueva fecha de llegada");
-        LocalDate entrada= LocalDate.of(sc.nextInt(),sc.nextInt(),sc.nextInt());
+        LocalDate entrada = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
         System.out.println("Introduce el dia, mes y año de la nueva fecha de salida");
-        LocalDate salida= LocalDate.of(sc.nextInt(),sc.nextInt(),sc.nextInt());
+        LocalDate salida = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
         System.out.println("Introduce el id de la reserva");
         int id = sc.nextInt();
         serviciosReservas.modificarReservaFecha(id, entrada, salida);
@@ -214,9 +229,9 @@ public class GestionarClientes {
         System.out.println("Introduzca el id de la actividad");
         int id = sc.nextInt();
         System.out.println("Introduce el dia, mes y año de tu fecha de llegada");
-        LocalDate entrada= LocalDate.of(sc.nextInt(),sc.nextInt(),sc.nextInt());
+        LocalDate entrada = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
         System.out.println("Introduce el dia, mes y año de tu fecha de salida");
-        LocalDate salida= LocalDate.of(sc.nextInt(),sc.nextInt(),sc.nextInt());
+        LocalDate salida = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
         if (serviciosReservas.reservarActividad(id, entrada, salida, cliente))
             System.out.println("Actividad reservada cn exito");
     }
@@ -224,7 +239,7 @@ public class GestionarClientes {
     public void cancelarActividad() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduzca el id de la actividad que deseas cancelar");
-        serviciosReservas.cancelarActividad(sc.nextInt(),cliente);
+        serviciosReservas.cancelarActividad(sc.nextInt(), cliente);
     }
 
     public void modificarContrasenya() {
