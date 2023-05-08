@@ -4,10 +4,7 @@ import lombok.Data;
 import org.example.dao.DaoHotelFicheros;
 import org.example.dao.DaoReservas;
 import org.example.dao.DaoReservasImplementacion;
-import org.example.domain.Actividad;
-import org.example.domain.Cliente;
-import org.example.domain.Hotel;
-import org.example.domain.Reserva;
+import org.example.domain.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -74,13 +71,18 @@ public class GestionReservas implements IGestionReservas{
     }
 
     @Override
-    public List<Reserva> verReservas(boolean ascendente) {
-        return daoReservas.verReservas(ascendente);
+    public List<Reserva> verReservas(boolean ascendente, Cliente cliente) {
+        return daoReservas.verReservas(ascendente, cliente);
     }
 
     @Override
     public boolean modificarReservaFecha(int id, LocalDate entrada, LocalDate salida) {
         return daoReservas.moficarReservaFecha(id, entrada, salida);
+    }
+
+    @Override
+    public List<Habitacion> obtenerHabitaciones(LocalDate entrada, LocalDate salida) {
+        return daoReservas.obtenerHabitaciones(entrada, salida);
     }
 
     @Override

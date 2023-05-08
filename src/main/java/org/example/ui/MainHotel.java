@@ -30,26 +30,26 @@ public class MainHotel {
                     hotel.gestion();
                     break;
                 case 3:
+                    System.out.println(Constantes.HA_ELEGIDO_SALIR);
                     fin = true;
                     break;
                 default:
-                    System.out.println("Introduzca una opción válida.");
+                    System.out.println(Constantes.INTRODUZCA_UNA_OPCIÓN_VÁLIDA);
             }
         } while (!fin);
     }
     public static int mostrarMenu() {
         Scanner teclado = new Scanner(System.in);
-        System.out.println("Introduzca 1 si eres cliente o 2 si eres administrador.");
+        System.out.println(Constantes.INTRODUZCA_1_SI_ERES_CLIENTE_2_SI_ERES_ADMINISTRADOR_O_3_PARA_SALIR);
         boolean vuelve = false;
         int num = 0;
         while (!vuelve) {
             try {
-                //System.out.println(Constantes.INTRODUCE_NÚMERO);
                 num = teclado.nextInt();
                 vuelve = true;
                 //has metido un número!!
             } catch (InputMismatchException exception) {
-                System.out.println("Tienes que introducir un número, no una letra");
+                System.out.println(Constantes.TIENES_QUE_INTRODUCIR_UN_NÚMERO_NO_UNA_LETRA);
                 System.out.println(exception.getMessage());
                 teclado.nextLine();
             }

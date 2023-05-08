@@ -1,15 +1,11 @@
 package org.example.dao;
 
 import lombok.Data;
-import org.example.domain.Actividad;
-import org.example.domain.Cliente;
-import org.example.domain.Hotel;
-import org.example.domain.Reserva;
+import org.example.domain.*;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -164,19 +160,11 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
     }
 
     @Override
-    public List<Reserva> verReservas(boolean ascendente) {
-        /*List<Reserva> reservas = null;
-        for (int i = 0; i < hotel.getClientes().size(); i++) {
-            if (hotel.getClientes().get(i).getReservas()!=null){
-                for (int j = 0; j < hotel.getClientes().get(i).getReservas().size(); j++) {
-                    reservas.add(hotel.getClientes().get(i).getReservas().get(j));
-                }
-            }
-        }
-        return reservas;*/
-        List<Reserva> reservas = hotel.getClientes().stream()
-                .flatMap(cliente -> cliente.getReservas() != null ? cliente.getReservas().stream() : Stream.empty())
-                .collect(Collectors.toList());
+    public List<Reserva> verReservas(boolean ascendente, Cliente cliente) {
+        List<Reserva> reservas = cliente.getReservas();
+        Collections.sort(reservas);
+        if (!ascendente)
+            Collections.reverse(reservas);
         return reservas;
     }
 
@@ -197,7 +185,7 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
 
 
     @Override
-    public boolean moficarReservaFecha(int id, LocalDate entrada, LocalDate salida) { // Hacemos otra de fecha?
+    public boolean moficarReservaFecha(int id, LocalDate entrada, LocalDate salida) {
         /*boolean hecho= false;
         for (int i = 0; i < hotel.getClientes().size(); i++) {
             if (hotel.getClientes().get(i).getReservas()!=null){
@@ -224,4 +212,31 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
         return hecho;
     }
 
+    @Override
+    public List<Habitacion> obtenerHabitaciones(LocalDate entrada, LocalDate salida) {
+        List<Habitacion> disponibles = null;
+        for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
+            if (!hotel.getHabitaciones().get(i).estanOcupadas(entrada, salida))
+                disponibles.add(hotel.getHabitaciones().get(i));
+        }
+        return disponibles;
+    }
+
+    @Override
+    public int obtenerCosto(Reserva reserva) {
+        List<Integer> aux = reserva.getHabitacion();
+        LocalDate entrada = reserva.getEntrada();
+        LocalDate salida = reserva.getSalida();
+        int costo = 0;
+        int dias = (int) ChronoUnit.DAYS.between(salida, entrada);
+        for (int i = 0; i < aux.size(); i++) {
+            for (int j = 0; j < hotel.getHabitaciones().size(); j++) {
+                if (hotel.getHabitaciones().get(j).getNumero() == aux.get(i)) {
+                    costo = costo + (hotel.getHabitaciones().get(j).getPrecio() * dias);
+                    j = hotel.getHabitaciones().size();
+                }
+            }
+        }
+        return costo;
+    }
 }

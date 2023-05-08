@@ -7,7 +7,9 @@ import org.example.domain.*;
 import org.example.service.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -153,7 +155,7 @@ public class GestionarClientes {
         } while (opcion != 10);
     }
 
-    public static int mostrarMenu() {
+    public static int obtenerNumero() {
         Scanner teclado = new Scanner(System.in);
         boolean vuelve = false;
         int num = 0;
@@ -174,13 +176,36 @@ public class GestionarClientes {
 
     public void anyadirReserva() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce el dia, mes y año de la llegada");
-        LocalDate entrada = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
-        System.out.println("Introduce el dia, mes y año de la salida");
-        LocalDate salida = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
-        System.out.println("Introduce la cantidad de personas");
+        System.out.println(Constantes.INTRODUCE_EL_DIA_MES_Y_AÑO_DE_LA_LLEGADA);
+        System.out.println(Constantes.DÍA);
+        int dia = sc.nextInt();
+        System.out.println(Constantes.MES);
+        int mes = sc.nextInt();
+        System.out.println(Constantes.AÑO);
+        int anyo = sc.nextInt();
+        sc.nextLine();
+        LocalDate entrada = LocalDate.of(anyo, mes, dia);
+        System.out.println(Constantes.INTRODUCE_EL_DIA_MES_Y_AÑO_DE_LA_SALIDA);
+        System.out.println(Constantes.DÍA);
+        int dia2 = sc.nextInt();
+        System.out.println(Constantes.MES);
+        int mes2 = sc.nextInt();
+        System.out.println(Constantes.AÑO);
+        int anyo2 = sc.nextInt();
+        sc.nextLine();
+        LocalDate salida = LocalDate.of(anyo2, mes2, dia2);
+        System.out.println(serviciosReservas.obtenerHabitaciones(entrada, salida));
+        System.out.println(Constantes.INTRODUCE_EL_NUMERO_DE_LAS_HABITACIONES_QUE_VAS_A_NECESITAR);
+        int opcion = obtenerNumero();
+        List<Integer> habitaciones= new ArrayList<>();
+        for (int i = 0; i < opcion; i++) {
+            System.out.println(Constantes.INTRODUCE_EL_ID_DE_LA_HABITACIÓN_DESEADA);
+            habitaciones.add(obtenerNumero());
+        }
+        System.out.println(Constantes.INTRODUCE_EL_NUMERO_DE_INQUILINOS);
         int personas = sc.nextInt();
-        serviciosReservas.addReserva(cliente, new Reserva(entrada, salida, cliente.getDni(), personas));
+        sc.nextLine();
+        serviciosReservas.addReserva(cliente, new Reserva(entrada, salida, cliente.getDni(), personas, habitaciones));
     }
 
     public void cancelarReserva() {
@@ -205,7 +230,7 @@ public class GestionarClientes {
                 default:
             }
         } while (!sigue);
-        System.out.println(serviciosReservas.verReservas(ascendente));
+        System.out.println(serviciosReservas.verReservas(ascendente, cliente));
     }
 
     public void modificarReservaFecha() {

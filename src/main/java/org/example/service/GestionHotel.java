@@ -19,6 +19,9 @@ public class GestionHotel implements IGestionHotel {
     public Hotel getHotel() {
         return daoHotel.getHotel();
     }
+    public boolean anyadirFechaActividad(LocalDate fecha, int id){
+        return daoHotel.anyadirFechaActividad(fecha, id);
+    }
 
     public boolean anyadirHabitacion(Habitacion habitacion) {
         return daoHotel.anyadirHabitacion(habitacion);

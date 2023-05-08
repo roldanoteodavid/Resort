@@ -15,7 +15,7 @@ public interface IGestionHotel {
 
     boolean comprobarDisponibilidad(LocalDate date);
 
-
+    boolean anyadirFechaActividad(LocalDate fecha, int id);
     boolean addReserva(Reserva reserva, String dni);//dni cliente
 
     List<Cliente> verClientes(boolean ascendente); //booleano

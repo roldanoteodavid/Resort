@@ -30,7 +30,7 @@ public class GestionarHotel {
             System.out.println(Constantes.CONTRASEÑA_CORRECTA);
             int opcion = 0;
             do {
-                System.out.println("Introduzca 1 para gestionar los clientes, 2 para gestionar habitaciones y 3 para las actividades.");
+                System.out.println(Constantes.INTRODUZCA_1_PARA_GESTIONAR_LOS_CLIENTES_2_PARA_GESTIONAR_HABITACIONES_3_PARA_LAS_ACTIVIDADES_Y_4_PARA_SALIR);
                 opcion = mostrarMenu();
                 switch (opcion) {
                     case 1:
@@ -52,6 +52,7 @@ public class GestionarHotel {
                             default:
                                 System.out.println(Constantes.INTRODUZCA_UNA_OPCIÓN_VÁLIDA);
                         }
+                        break;
                     case 2:
                         System.out.println(Constantes.INTRODUZCA_1_PARA_VER_LA_LISTA_DE_HABITACIONES_2_PARA_AÑADIR_UNA_HABITACIÓN_3_PARA_BORRAR_UNA_HABITACIÓN_4_PARA_COMPROBAR_LA_DISPONIBILIDAD_Y_5_PARA_SALIR);
                         opcion = mostrarMenu();
@@ -185,10 +186,9 @@ public class GestionarHotel {
         int opcion = mostrarMenu();
         if (opcion == 1) {
             ascendente = true;
-        } else if (teclado.nextInt() == 2) {
+        } else if (opcion == 2) {
             ascendente = false;
         }
-        teclado.nextLine();
         System.out.println(serviciosHotel.verClientes(ascendente));
     }
 
@@ -222,7 +222,6 @@ public class GestionarHotel {
             }
         } catch (LugarException e) {
             System.out.println(e.getMessage());
-            //throw new RuntimeException(e);
         }
     }
 
@@ -265,7 +264,6 @@ public class GestionarHotel {
             }
         } catch (AlFrancesException e) {
             System.out.println(e.getMessage());
-            //throw new RuntimeException(e);
         }
     }
 

@@ -12,6 +12,8 @@ public interface DaoHotel {
 
     boolean anyadirHabitacion(Habitacion habitacion);
 
+
+
     boolean borrarHabitacion(int numeroHab);
 
     List<Habitacion> listarHabitaciones(boolean ascendente);
@@ -39,6 +41,8 @@ public interface DaoHotel {
     boolean anyadirActividad(Actividad actividad);
 
     boolean borrarActividad(int id);
+
+    boolean anyadirFechaActividad(LocalDate fecha, int id);
 
     List<Actividad> listarActividades(boolean ascendente);
 }
