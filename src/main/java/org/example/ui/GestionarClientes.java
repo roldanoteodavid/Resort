@@ -1,17 +1,10 @@
 package org.example.ui;
 
-import com.sun.source.tree.IfTree;
 import org.example.common.AlFrancesException;
-import org.example.common.LugarException;
+import org.example.common.Constantes;
 import org.example.dao.DaoHotelFicheros;
-import org.example.domain.Actividad;
-import org.example.domain.Cliente;
-import org.example.domain.Hotel;
-import org.example.domain.Reserva;
-import org.example.service.GestionHotel;
-import org.example.service.GestionReservas;
-import org.example.service.IGestionHotel;
-import org.example.service.IGestionReservas;
+import org.example.domain.*;
+import org.example.service.*;
 
 import java.time.LocalDate;
 import java.util.InputMismatchException;
@@ -20,6 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GestionarClientes {
+    public static final String INTRODUZCA_SU_TELÉFONO = "Introduzca su teléfono.";
     private final IGestionReservas serviciosReservas;
     private Cliente cliente;
 
@@ -31,22 +25,22 @@ public class GestionarClientes {
         Scanner teclado = new Scanner(System.in);
         boolean valido = false;
         do {
-            System.out.println("Introduzca 1 para iniciar sesión, 2 para registrarse y 3 para salir.");
-            int opcion = mostrarMenu();
+            System.out.println(Constantes.INTRODUZCA_1_PARA_INICIAR_SESIÓN_2_PARA_REGISTRARSE_Y_3_PARA_SALIR);
+            int opcion = obtenerNumero();
             switch (opcion) {
                 case 1:
                     boolean entrar = false;
                     while (!entrar) {
-                        System.out.println("Introduzca su usuario");
+                        System.out.println(Constantes.INTRODUZCA_SU_USUARIO_DNI);
                         String dni = teclado.nextLine();
-                        System.out.println("Introduzca la contraseña");
+                        System.out.println(Constantes.INTRODUZCA_LA_CONTRASEÑA);
                         if (serviciosReservas.iniciarSesion(dni, teclado.nextLine())) {
                             entrar = true;
                             cliente = serviciosReservas.clientePorDni(dni);
                             sacarMenu();
                             valido = true;
                         } else {
-                            System.out.println("Contraseña o usuario incorrecto");
+                            System.out.println(Constantes.CONTRASEÑA_O_USUARIO_INCORRECTO);
                         }
                     }
                     break;
@@ -57,11 +51,12 @@ public class GestionarClientes {
                     }
                     break;
                 case 3:
-                    System.out.println("Ha elegido salir.");
+                    System.out.println(Constantes.HA_ELEGIDO_SALIR);
+                    DaoHotelFicheros.escribirFicheroBinario(serviciosReservas.getHotel());
                     valido = true;
                     break;
                 default:
-                    System.out.println("Introduzca una opción válida.");
+                    System.out.println(Constantes.INTRODUZCA_UNA_OPCIÓN_VÁLIDA);
             }
         } while (!valido);
     }
@@ -69,16 +64,16 @@ public class GestionarClientes {
     public boolean registrarse() {
         Scanner teclado = new Scanner(System.in);
         boolean iniciado = false;
-        System.out.println("Introduzca su dni.");
+        System.out.println(Constantes.INTRODUZCA_SU_DNI);
         String dni = teclado.nextLine();
-        System.out.println("Introduzca su nombre.");
+        System.out.println(Constantes.INTRODUZCA_SU_NOMBRE);
         String nombre = teclado.nextLine();
-        System.out.println("Introduzca su teléfono.");
+        System.out.println(INTRODUZCA_SU_TELÉFONO);
         String telefono = teclado.nextLine();
         boolean passvalid = false;
         String contrasenya = null;
         do {
-            System.out.println("Introduzca su contraseña.");
+            System.out.println(Constantes.INTRODUZCA_SU_CONTRASEÑA);
             contrasenya = teclado.nextLine();
             Pattern p = Pattern.compile("^(?=.*[0-9])"
                     + "(?=.*[a-z])(?=.*[A-Z])"
@@ -90,21 +85,21 @@ public class GestionarClientes {
             }
 
         } while (!passvalid);
-        System.out.println("Introduzca su país.");
+        System.out.println(Constantes.INTRODUZCA_SU_PAÍS);
         String pais = teclado.nextLine();
-        System.out.println("Introduzca su día de nacimiento.");
+        System.out.println(Constantes.INTRODUZCA_SU_DÍA_DE_NACIMIENTO);
         int dia = teclado.nextInt();
-        System.out.println("Introduzca su mes de nacimiento.");
+        System.out.println(Constantes.INTRODUZCA_SU_MES_DE_NACIMIENTO);
         int mes = teclado.nextInt();
-        System.out.println("Introduzca su año de nacimiento.");
+        System.out.println(Constantes.INTRODUZCA_SU_AÑO_DE_NACIMIENTO);
         int anyo = teclado.nextInt();
         try {
             Cliente cliente = new Cliente(dni, nombre, LocalDate.of(anyo, mes, dia), telefono, pais, contrasenya);
             if (serviciosReservas.anyadirCliente(cliente)) {
-                System.out.println("Cliente registrado.");
+                System.out.println(Constantes.CLIENTE_REGISTRADO);
                 iniciado = true;
             } else {
-                System.out.println("Error al registrarse.");
+                System.out.println(Constantes.ERROR_AL_REGISTRARSE);
             }
         } catch (AlFrancesException e) {
             System.out.println(e.getMessage());
@@ -118,40 +113,41 @@ public class GestionarClientes {
         //cliente = serviciosReservas.clientePorDni(dni);
         int opcion = 0;
         do {
-            System.out.println("Introduzca 1 para gestionar las reservas, 2 para gestionar las actividades, 3 para cambiar la contraseña y 4 para salir");
-            opcion = mostrarMenu();
+            System.out.println(Constantes.INTRODUZCA_1_PARA_GESTIONAR_LAS_RESERVAS_2_PARA_GESTIONAR_LAS_ACTIVIDADES_3_PARA_CAMBIAR_LA_CONTRASEÑA_Y_4_PARA_SALIR);
+            opcion = obtenerNumero();
             switch (opcion) {
                 case 1:
-                    System.out.println("Introduzca 1 para ver la lista de clientes, 2 para añadir un cliente, 3 para borrar un cliente y 4 para salir.");
-                    opcion = mostrarMenu();
+                    System.out.println(Constantes.INTRODUZCA_1_PARA_AÑADIR_UNA_RESERVA_2_PARA_CANCELAR_UNA_RESERVA_3_PARA_VER_SUS_RESERVAS_4_PARA_MODIFICAR_LA_FECHA_DE_UNA_RESERVA_EXISTENTE_Y_5_PARA_SALIR);
+                    opcion = obtenerNumero();
                     switch (opcion) {
                         case 1 -> anyadirReserva();
                         case 2 -> cancelarReserva();
                         case 3 -> verReservas();
                         case 4 -> modificarReservaFecha();
-                        case 5 -> System.out.println("Has elegido salir.");
-                        default -> System.out.println("Introduzca una opción válida.");
+                        case 5 -> System.out.println(Constantes.HAS_ELEGIDO_SALIR);
+                        default -> System.out.println(Constantes.INTRODUZCA_UNA_OPCIÓN_VÁLIDA);
                     }
 
                     break;
                 case 2:
-                    System.out.println("Introduzca 1 para reservar una actividad, 2 para cancelar una actividad y 3 para salir.");
-                    opcion = mostrarMenu();
+                    System.out.println(Constantes.INTRODUZCA_1_PARA_RESERVAR_UNA_ACTIVIDAD_2_PARA_CANCELAR_UNA_ACTIVIDAD_3_PARA_VER_SUS_ACTIVIDADES_Y_4_PARA_SALIR);
+                    opcion = obtenerNumero();
                     switch (opcion) {
                         case 1 -> anyadirActividad();
                         case 2 -> cancelarActividad();
-                        case 3 -> System.out.println("Has elegido salir.");
-                        default -> System.out.println("Introduzca una opción válida.");
+                        case 3 -> verMisActividades();
+                        case 4 -> System.out.println(Constantes.HAS_ELEGIDO_SALIR);
+                        default -> System.out.println(Constantes.INTRODUZCA_UNA_OPCIÓN_VÁLIDA);
                     }
                     break;
                 case 3:
                     modificarContrasenya();
                     break;
                 case 4:
-                    System.out.println("Ha elegido salir.");
+                    System.out.println(Constantes.HA_ELEGIDO_SALIR);
                     break;
                 default:
-                    System.out.println("Introduzca una opción válida.");
+                    System.out.println(Constantes.INTRODUZCA_UNA_OPCIÓN_VÁLIDA);
             }
 
         } while (opcion != 10);
@@ -163,12 +159,12 @@ public class GestionarClientes {
         int num = 0;
         while (!vuelve) {
             try {
-                System.out.println("Introduce número");
+                System.out.println(Constantes.INTRODUCE_NÚMERO);
                 num = teclado.nextInt();
                 vuelve = true;
                 //has metido un número!!
             } catch (InputMismatchException exception) {
-                System.out.println("Tienes que introducir un número, no una letra.");
+                System.out.println(Constantes.TIENES_QUE_INTRODUCIR_UN_NÚMERO_NO_UNA_LETRA);
                 System.out.println(exception.getMessage());
                 teclado.nextLine();
             }
@@ -189,7 +185,7 @@ public class GestionarClientes {
 
     public void cancelarReserva() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce el id de la reserva");
+        System.out.println(Constantes.INTRODUCE_EL_ID_DE_LA_RESERVA);
         serviciosReservas.cancelarReserva(sc.nextInt());
     }
 
@@ -198,8 +194,8 @@ public class GestionarClientes {
         boolean ascendente = false;
         do {
 
-            System.out.println("Pulse 1 si lo quiere de manera ascendente y 2 si lo quiere descendente");
-            int opcion = mostrarMenu();
+            System.out.println(Constantes.PULSE_1_SI_LO_QUIERE_DE_MANERA_ASCENDENTE_Y_2_SI_LO_QUIERE_DESCENDENTE);
+            int opcion = obtenerNumero();
             switch (opcion) {
                 case 1:
                     ascendente = true;
@@ -214,11 +210,11 @@ public class GestionarClientes {
 
     public void modificarReservaFecha() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduce el dia, mes y año de la nueva fecha de llegada");
+        System.out.println(Constantes.INTRODUCE_EL_DIA_MES_Y_AÑO_DE_LA_NUEVA_FECHA_DE_LLEGADA);
         LocalDate entrada = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
-        System.out.println("Introduce el dia, mes y año de la nueva fecha de salida");
+        System.out.println(Constantes.INTRODUCE_EL_DIA_MES_Y_AÑO_DE_LA_NUEVA_FECHA_DE_SALIDA);
         LocalDate salida = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
-        System.out.println("Introduce el id de la reserva");
+        System.out.println(Constantes.INTRODUCE_EL_ID_DE_LA_RESERVA1);
         int id = sc.nextInt();
         serviciosReservas.modificarReservaFecha(id, entrada, salida);
 
@@ -226,29 +222,42 @@ public class GestionarClientes {
 
     public void anyadirActividad() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduzca el id de la actividad");
+        System.out.println(Constantes.INTRODUZCA_EL_ID_DE_LA_ACTIVIDAD);
         int id = sc.nextInt();
-        System.out.println("Introduce el dia, mes y año de tu fecha de llegada");
+        System.out.println(Constantes.INTRODUCE_EL_DIA_MES_Y_AÑO_DE_TU_FECHA_DE_LLEGADA);
         LocalDate entrada = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
-        System.out.println("Introduce el dia, mes y año de tu fecha de salida");
+        System.out.println(Constantes.INTRODUCE_EL_DIA_MES_Y_AÑO_DE_TU_FECHA_DE_SALIDA);
         LocalDate salida = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
         if (serviciosReservas.reservarActividad(id, entrada, salida, cliente))
-            System.out.println("Actividad reservada cn exito");
+            System.out.println(Constantes.ACTIVIDAD_RESERVADA_CN_EXITO);
     }
 
     public void cancelarActividad() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Introduzca el id de la actividad que deseas cancelar");
+        System.out.println(Constantes.INTRODUZCA_EL_ID_DE_LA_ACTIVIDAD_QUE_DESEAS_CANCELAR);
         serviciosReservas.cancelarActividad(sc.nextInt(), cliente);
+    }
+
+    public void verMisActividades() {
+        Scanner teclado = new Scanner(System.in);
+        boolean ascendente = true;
+        System.out.println(Constantes.INTRODUZCA_1_SI_DESEA_VER_LA_LISTA_ASCENDENTE_O_2_PARA_DESCENDENTE);
+        int opcion = obtenerNumero();
+        if (opcion == 1) {
+            ascendente = true;
+        } else if (opcion == 2) {
+            ascendente = false;
+        }
+        System.out.println(serviciosReservas.verMisActividades(cliente, ascendente));
     }
 
     public void modificarContrasenya() {
         Scanner teclado = new Scanner(System.in);
         String contrasenya = null;
         for (boolean coinciden = false; !coinciden; ) {
-            System.out.println("Introduce una nueva contraseña");
+            System.out.println(Constantes.INTRODUCE_UNA_NUEVA_CONTRASEÑA);
             contrasenya = teclado.nextLine();
-            System.out.println("Confirmar contraseña");
+            System.out.println(Constantes.CONFIRMAR_CONTRASEÑA);
             String cotrasenya2 = teclado.nextLine();
             if (contrasenya.equalsIgnoreCase(cotrasenya2))
                 coinciden = true;

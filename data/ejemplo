@@ -1,64 +1,7 @@
-Cliente
-	dni
-	nombre
-	fecha_nac
-	telefono
-	reservas List<Reserva>
-	pais (manejar excepción)
-Habitación
-	número
-	capacidad
-	tipo (añadir excepción)
-	precio
-Reserva
-	habitaciones List<Integer>
-	fecha_entrada
-	fecha_salida
-	dnicliente
-	inquilinos
-	preciototal
-Actividad
-	fecha
-	id
-	nombre
-	lugar (manejar excepción)
-	precio
-
-enum idiomas
-enum nacionalidades
-
-
-como usuario quiero:
-- registrarme como nuevo cliente (usuario y contraseña)
-- reservar
-- ver mis reservas
-- cancelar reserva
-- modificar reserva
-- reservar actividad (unido a la reserva de esas fechas)
-- cancelar actividad
-
-como administrador quiero:
-- borrar reservas
-- ver clientes
-- borrar cliente
-- añadir cliente
-- modificicar cliente
-- listar reservas
-	- fecha inicio y fin
-	- habitación
-	- tipo habitación
-- añadir actividad
-- borrar actividad
-- listar actividad
-	- fecha
-	- lugar
-
-	PREGUNTAS GEMA
+PREGUNTAS GEMA
 	Atrib password
 	Atrib fecha
 	Habitaciones libres o ocupadas
 	Clase Clientes
 	Clase Habitaciones
     EstructuraOk
-
-	Singleton

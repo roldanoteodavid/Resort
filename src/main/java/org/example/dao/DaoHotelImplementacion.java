@@ -121,7 +121,6 @@ public class DaoHotelImplementacion implements DaoHotel {
     }
 
 
-
     @Override
     public boolean modificarNombreCliente(String DNI, String nombre) {
         Cliente cliente = hotel.getClientes()
@@ -218,6 +217,27 @@ public class DaoHotelImplementacion implements DaoHotel {
     }
 
     @Override
+    public boolean anyadirFechaActividad(LocalDate fecha, int id) {
+        /*boolean anyadir = false;
+        for (int i = 0; i < hotel.getActividades().size(); i++) {
+            if(hotel.getActividades().get(i).getId()==id){
+                hotel.getActividades().get(i).getFechas().add(fecha);
+                i= hotel.getActividades().size();
+                anyadir= true;
+            }
+        }
+        return anyadir;*/
+        return hotel.getActividades().stream()
+                .filter(actividad -> actividad.getId() == id)
+                .findFirst()
+                .map(actividad -> {
+                    actividad.getFechas().add(fecha);
+                    return true;
+                })
+                .orElse(false);
+    }
+
+    @Override
     public List<Actividad> listarActividades(boolean ascendente) {
         List<Actividad> lista2;
         lista2 = this.hotel.getActividades();
@@ -226,7 +246,5 @@ public class DaoHotelImplementacion implements DaoHotel {
             Collections.reverse(lista2);
         }
         return lista2;
-        /*return Optional.ofNullable(hotel.getActividades())
-                .orElse(Collections.emptyList());*/
     }
 }

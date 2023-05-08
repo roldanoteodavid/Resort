@@ -90,6 +90,15 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
     }
 
     @Override
+    public List<Actividad> verMisActividades(Cliente cliente, boolean ascendente) {
+        List<Actividad> actividades = cliente.getActividades();
+        Collections.sort(actividades);
+        if (!ascendente)
+            Collections.reverse(actividades);
+        return actividades;
+    }
+
+    @Override
     public boolean cancelarReserva(int id) {
         /*boolean eliminar= false;
         for (int i = 0; i < hotel.getClientes().size(); i++) {
@@ -105,12 +114,12 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
         boolean eliminar = hotel.getClientes().stream()
                 .filter(cliente -> cliente.getReservas() != null)
                 .flatMap(cliente -> cliente.getReservas().stream())
-                .anyMatch(reserva -> Objects.equals(reserva.getId(),id));
+                .anyMatch(reserva -> Objects.equals(reserva.getId(), id));
 
         if (eliminar) {
             hotel.getClientes().forEach(cliente -> {
                 if (cliente.getReservas() != null) {
-                    cliente.getReservas().removeIf(reserva -> Objects.equals(reserva.getId(),id));
+                    cliente.getReservas().removeIf(reserva -> Objects.equals(reserva.getId(), id));
                 }
             });
         }
@@ -119,18 +128,18 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
 
     @Override
     public boolean reservarActividad(int id, LocalDate entrada, LocalDate salida, Cliente cliente) {
-        boolean hecho= false;
+        boolean hecho = false;
         //LocalDate entrada= null;
         //LocalDate salida= null;
-        Actividad actividad= null;
+        Actividad actividad = null;
         for (int i = 0; i < hotel.getActividades().size(); i++) {
-            if(((Integer) id).equals(hotel.getActividades().get(i).getId())){
-               actividad= hotel.getActividades().get(i);
+            if (((Integer) id).equals(hotel.getActividades().get(i).getId())) {
+                actividad = hotel.getActividades().get(i);
             }
         }
-        if (actividad.disponible(cliente,entrada,salida)){
+        if (actividad.disponible(cliente, entrada, salida)) {
             cliente.getActividades().add(actividad);
-            hecho=true;
+            hecho = true;
         }
 
         return hecho;

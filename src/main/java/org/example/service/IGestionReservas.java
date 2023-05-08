@@ -1,13 +1,13 @@
 package org.example.service;
 
-import org.example.domain.Actividad;
-import org.example.domain.Cliente;
-import org.example.domain.Reserva;
+import org.example.domain.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public interface IGestionReservas {
+    Hotel getHotel();
+    List<Actividad> verMisActividades(Cliente cliente, boolean ascendente);
     boolean anyadirCliente(Cliente cliente);
     boolean iniciarSesion(String dni, String contrasenya);
 

@@ -22,6 +22,17 @@ public class GestionReservas implements IGestionReservas{
         this.daoReservas = new DaoReservasImplementacion(hotel);
     }
 
+
+    @Override
+    public Hotel getHotel() {
+        return daoReservas.getHotel();
+    }
+
+    @Override
+    public List<Actividad> verMisActividades(Cliente cliente, boolean ascendente) {
+        return daoReservas.verMisActividades(cliente, ascendente);
+    }
+
     @Override
     public boolean anyadirCliente(Cliente cliente) {
         return daoReservas.anyadirCliente(cliente);
