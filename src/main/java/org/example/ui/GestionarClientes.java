@@ -15,7 +15,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GestionarClientes {
-    public static final String INTRODUZCA_SU_TELÉFONO = "Introduzca su teléfono.";
     private final IGestionReservas serviciosReservas;
     private Cliente cliente;
 
@@ -70,7 +69,7 @@ public class GestionarClientes {
         String dni = teclado.nextLine();
         System.out.println(Constantes.INTRODUZCA_SU_NOMBRE);
         String nombre = teclado.nextLine();
-        System.out.println(INTRODUZCA_SU_TELÉFONO);
+        System.out.println(Constantes.INTRODUZCA_SU_TELÉFONO);
         String telefono = teclado.nextLine();
         boolean passvalid = false;
         String contrasenya = null;
@@ -205,7 +204,7 @@ public class GestionarClientes {
             for (int j = 0; j < aux.size(); j++) {
                 if (((Integer) aux.get(j).getNumero()).equals(habitacion)){
                     habitaciones.add(habitacion);
-                    System.out.println("Habitación añadida.");
+                    System.out.println(Constantes.HABITACIÓN_AÑADIDA);
                 }
             }
         }
