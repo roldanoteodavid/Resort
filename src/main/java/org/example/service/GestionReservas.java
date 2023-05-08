@@ -86,6 +86,11 @@ public class GestionReservas implements IGestionReservas{
     }
 
     @Override
+    public int obtenerCosto(Reserva reserva) {
+        return daoReservas.obtenerCosto(reserva);
+    }
+
+    @Override
     public boolean escribirFicheroBinario() {
         return DaoHotelFicheros.escribirFicheroBinario(daoReservas.getHotel());
     }

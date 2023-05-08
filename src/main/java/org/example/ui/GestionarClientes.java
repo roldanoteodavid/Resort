@@ -194,18 +194,27 @@ public class GestionarClientes {
         int anyo2 = sc.nextInt();
         sc.nextLine();
         LocalDate salida = LocalDate.of(anyo2, mes2, dia2);
-        System.out.println(serviciosReservas.obtenerHabitaciones(entrada, salida));
+        List<Habitacion> aux = serviciosReservas.obtenerHabitaciones(entrada, salida);
+        System.out.println(aux);
         System.out.println(Constantes.INTRODUCE_EL_NUMERO_DE_LAS_HABITACIONES_QUE_VAS_A_NECESITAR);
         int opcion = obtenerNumero();
         List<Integer> habitaciones= new ArrayList<>();
         for (int i = 0; i < opcion; i++) {
             System.out.println(Constantes.INTRODUCE_EL_ID_DE_LA_HABITACIÓN_DESEADA);
-            habitaciones.add(obtenerNumero());
+            int habitacion=obtenerNumero();
+            for (int j = 0; j < aux.size(); j++) {
+                if (((Integer) aux.get(j).getNumero()).equals(habitacion)){
+                    habitaciones.add(habitacion);
+                    System.out.println("Habitación añadida.");
+                }
+            }
         }
         System.out.println(Constantes.INTRODUCE_EL_NUMERO_DE_INQUILINOS);
         int personas = sc.nextInt();
         sc.nextLine();
-        serviciosReservas.addReserva(cliente, new Reserva(entrada, salida, cliente.getDni(), personas, habitaciones));
+        Reserva reserva = new Reserva(entrada, salida, cliente.getDni(), personas, habitaciones);
+        reserva.setCosto(serviciosReservas.obtenerCosto(reserva));
+        serviciosReservas.addReserva(cliente, reserva);
     }
 
     public void cancelarReserva() {

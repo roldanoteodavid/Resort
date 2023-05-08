@@ -29,6 +29,8 @@ public interface IGestionReservas {
 
     List<Habitacion> obtenerHabitaciones(LocalDate entrada, LocalDate salida);
 
+    int obtenerCosto(Reserva reserva);
+
     boolean escribirFicheroBinario();
 
     boolean cargarFicheroBinario();
