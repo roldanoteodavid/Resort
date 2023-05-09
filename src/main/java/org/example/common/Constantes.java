@@ -13,6 +13,7 @@ public class Constantes {
             INTRODUZCA_EL_MES_DE_NACIMIENTO_DEL_CLIENTE = "Introduzca el mes de nacimiento del cliente.";
     public static final String INTRODUZCA_CONTRASEÑA = "Introduzca contraseña.";
     public static final String CONTRASEÑA_CORRECTA = "Contraseña correcta.";
+    public static final String CONTRASEÑA_NO_VALIDA = "Contraseña correcta.";
     public static final String INTRODUZCA_1_PARA_GESTIONAR_LOS_CLIENTES_2_PARA_GESTIONAR_HABITACIONES_3_PARA_LAS_ACTIVIDADES_Y_4_PARA_SALIR = "Introduzca 1 para gestionar los clientes, 2 para gestionar habitaciones, 3 para las actividades y 4 para salir.";
     public static final String INTRODUZCA_1_PARA_VER_LA_LISTA_DE_CLIENTES_2_PARA_AÑADIR_UN_CLIENTE_3_PARA_BORRAR_UN_CLIENTE_Y_4_PARA_SALIR = "Introduzca 1 para ver la lista de clientes, 2 para añadir un cliente, 3 para borrar un cliente y 4 para salir.";
     public static final String INTRODUZCA_1_PARA_VER_LA_LISTA_DE_HABITACIONES_2_PARA_AÑADIR_UNA_HABITACIÓN_3_PARA_BORRAR_UNA_HABITACIÓN_4_PARA_COMPROBAR_LA_DISPONIBILIDAD_Y_5_PARA_SALIR = "Introduzca 1 para ver la lista de habitaciones, 2 para añadir una habitación, 3 para borrar una habitación, 4 para comprobar la disponibilidad y 5 para salir.";

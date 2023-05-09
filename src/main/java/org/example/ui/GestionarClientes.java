@@ -83,6 +83,8 @@ public class GestionarClientes {
             Matcher mat = p.matcher(contrasenya);
             if (mat.matches()) {
                 passvalid = true;
+            } else {
+                System.out.println(Constantes.CONTRASEÑA_NO_VALIDA);
             }
 
         } while (!passvalid);
@@ -197,12 +199,12 @@ public class GestionarClientes {
         System.out.println(aux);
         System.out.println(Constantes.INTRODUCE_EL_NUMERO_DE_LAS_HABITACIONES_QUE_VAS_A_NECESITAR);
         int opcion = obtenerNumero();
-        List<Integer> habitaciones= new ArrayList<>();
+        List<Integer> habitaciones = new ArrayList<>();
         for (int i = 0; i < opcion; i++) {
             System.out.println(Constantes.INTRODUCE_EL_ID_DE_LA_HABITACIÓN_DESEADA);
-            int habitacion=obtenerNumero();
+            int habitacion = obtenerNumero();
             for (int j = 0; j < aux.size(); j++) {
-                if (((Integer) aux.get(j).getNumero()).equals(habitacion)){
+                if (((Integer) aux.get(j).getNumero()).equals(habitacion)) {
                     habitaciones.add(habitacion);
                     System.out.println(Constantes.HABITACIÓN_AÑADIDA);
                 }
@@ -288,8 +290,21 @@ public class GestionarClientes {
         Scanner teclado = new Scanner(System.in);
         String contrasenya = null;
         for (boolean coinciden = false; !coinciden; ) {
-            System.out.println(Constantes.INTRODUCE_UNA_NUEVA_CONTRASEÑA);
-            contrasenya = teclado.nextLine();
+            boolean passvalid = false;
+            do {
+                System.out.println(Constantes.INTRODUCE_UNA_NUEVA_CONTRASEÑA);
+                contrasenya = teclado.nextLine();
+                Pattern p = Pattern.compile("^(?=.*[0-9])"
+                        + "(?=.*[a-z])(?=.*[A-Z])"
+                        + "(?=.*[@#$%^&+=])"
+                        + "(?=\\S+$).{8,20}$");
+                Matcher mat = p.matcher(contrasenya);
+                if (mat.matches()) {
+                    passvalid = true;
+                } else {
+                    System.out.println(Constantes.CONTRASEÑA_NO_VALIDA);
+                }
+            } while (!passvalid);
             System.out.println(Constantes.CONFIRMAR_CONTRASEÑA);
             String cotrasenya2 = teclado.nextLine();
             if (contrasenya.equalsIgnoreCase(cotrasenya2))
