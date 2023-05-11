@@ -7,10 +7,16 @@ import org.example.domain.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public class GestionHotel implements IGestionHotel {
     private final DaoHotel daoHotel;
-
+    public  Map<String,Long> numeroClientesPais(){
+        return daoHotel.numeroClientesPais();
+    }
+    public Map<String,List<Cliente>> clientesporPais(){
+        return daoHotel.clientesporPais();
+    }
     public GestionHotel(Hotel hotel) {
         daoHotel = new DaoHotelImplementacion(hotel);
     }

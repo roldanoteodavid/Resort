@@ -13,6 +13,7 @@ import org.example.service.IGestionHotel;
 
 import java.time.LocalDate;
 import java.util.InputMismatchException;
+import java.util.Map;
 import java.util.Scanner;
 
 public class GestionarHotel {
@@ -47,6 +48,9 @@ public class GestionarHotel {
                                 borrarCliente();
                                 break;
                             case 4:
+                                numeroClientesPais();
+                                break;
+                            case 5:
                                 System.out.println(Constantes.HA_ELEGIDO_SALIR);
                                 break;
                             default:
@@ -130,6 +134,15 @@ public class GestionarHotel {
             }
         }
         return num;
+    }
+
+    public void clientesporPais(){
+        System.out.println(serviciosHotel.clientesporPais());
+    }
+
+    public void numeroClientesPais(){
+        Map<String,Long> porPaisConteo=serviciosHotel.numeroClientesPais();
+        porPaisConteo.forEach((k, v) -> System.out.printf("%-30s | %s %n", k, porPaisConteo.get(k)));
     }
 
     public void anyadirHabitacion() {

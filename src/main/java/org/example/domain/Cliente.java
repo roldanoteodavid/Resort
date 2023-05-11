@@ -72,6 +72,7 @@ public @Data class Cliente implements Serializable, Comparable<Cliente> {
                 '}';
     }
 
+
     /**
      * Compares this object with the specified object for order.  Returns a
      * negative integer, zero, or a positive integer as this object is less
@@ -109,4 +110,6 @@ public @Data class Cliente implements Serializable, Comparable<Cliente> {
         //return String.com
         return this.dni.compareTo(o.dni);
     }
+
+
 }

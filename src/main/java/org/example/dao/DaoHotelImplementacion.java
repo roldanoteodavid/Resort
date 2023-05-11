@@ -4,10 +4,10 @@ import lombok.Data;
 import org.example.domain.*;
 
 import java.time.LocalDate;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.groupingBy;
 
 @Data
 public class DaoHotelImplementacion implements DaoHotel {
@@ -237,6 +237,14 @@ public class DaoHotelImplementacion implements DaoHotel {
                 .orElse(false);
     }
 
+    public Map<String,List<Cliente>> clientesporPais(){
+        return this.hotel.getClientes().stream().collect(groupingBy(Cliente::getPais));
+
+    }
+
+    public Map<String,Long> numeroClientesPais(){
+        return this.hotel.getClientes().stream().collect(groupingBy(Cliente::getPais, counting()));
+    }
     @Override
     public List<Actividad> listarActividades(boolean ascendente) {
         List<Actividad> lista2;

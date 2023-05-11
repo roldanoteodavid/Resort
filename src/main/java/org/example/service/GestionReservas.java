@@ -8,6 +8,7 @@ import org.example.domain.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public class GestionReservas implements IGestionReservas{
     private final DaoReservas daoReservas;
@@ -30,7 +31,7 @@ public class GestionReservas implements IGestionReservas{
         return daoReservas.verMisActividades(cliente, ascendente);
     }
 
-    @Override
+@Override
     public boolean anyadirCliente(Cliente cliente) {
         return daoReservas.anyadirCliente(cliente);
     }

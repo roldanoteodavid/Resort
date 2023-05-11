@@ -11,7 +11,11 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static java.util.stream.Collectors.groupingBy;
 
 public @Data class Hotel implements Serializable {
     private List<Actividad> actividades;
@@ -90,4 +94,33 @@ public @Data class Hotel implements Serializable {
         return actividades;
     }
 
+
+
+    private List<Cliente> listaIndividuosProvincia(String pais) {
+        List<Cliente> lista = new ArrayList<>();
+        for(Cliente individuo: this.getClientes())
+            if (individuo.getPais().equalsIgnoreCase(pais))
+                lista.add(individuo);
+        return lista;
+    }
+
+    private List<String> sacarListaPaises(){
+        List<String> paises= new ArrayList<>();
+        for (int i = 0; i < clientes.size(); i++) {
+            boolean repe=false;
+            if (paises.size()==0){
+                paises.add(clientes.get(i).getPais());
+            }
+            else {
+                for (int j = 0; j < paises.size() && !repe; j++) {
+                    if (clientes.get(i).getPais().equalsIgnoreCase(paises.get(j)))
+                        repe=true;
+                }
+                if (!repe){
+                    paises.add(clientes.get(i).getPais());
+                }
+            }
+        }
+        return paises;
+    }
 }

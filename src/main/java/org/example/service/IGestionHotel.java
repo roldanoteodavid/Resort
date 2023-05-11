@@ -4,18 +4,18 @@ import org.example.domain.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public interface IGestionHotel {
     Hotel getHotel();
     boolean anyadirHabitacion(Habitacion habitacion);
-
     boolean borrarHabitacion(int numeroHab);
-
     List<Habitacion> listarHabitaciones(boolean ascendente);
 
     boolean comprobarDisponibilidad(LocalDate date);
 
     boolean anyadirFechaActividad(LocalDate fecha, int id);
+
     boolean addReserva(Reserva reserva, String dni);//dni cliente
 
     List<Cliente> verClientes(boolean ascendente); //booleano
@@ -23,6 +23,8 @@ public interface IGestionHotel {
     boolean borrarCliente(String dni);
 
     boolean anyadirCliente(Cliente cliente);
+
+    Map<String,List<Cliente>> clientesporPais();
 
     boolean modificarNombreCliente(String dni, String nombre);
 
@@ -37,6 +39,8 @@ public interface IGestionHotel {
     boolean borrarActividad(int id);
 
     List<Actividad> listarActividades(boolean ascendente); //booleano
+
+    Map<String,Long> numeroClientesPais();
 
     boolean escribirFicheroBinario();
 

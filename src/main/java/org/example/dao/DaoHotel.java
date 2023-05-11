@@ -4,6 +4,7 @@ import org.example.domain.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 public interface DaoHotel {
     Hotel getHotel();
@@ -12,7 +13,7 @@ public interface DaoHotel {
 
     boolean anyadirHabitacion(Habitacion habitacion);
 
-
+    Map<String,List<Cliente>> clientesporPais();
 
     boolean borrarHabitacion(int numeroHab);
 
@@ -45,4 +46,6 @@ public interface DaoHotel {
     boolean anyadirFechaActividad(LocalDate fecha, int id);
 
     List<Actividad> listarActividades(boolean ascendente);
+
+    Map<String,Long> numeroClientesPais();
 }
