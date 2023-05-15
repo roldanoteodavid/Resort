@@ -95,49 +95,41 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
     }
 
     @Override
-    public boolean cancelarReserva(int id) {
-        /*boolean eliminar= false;
-        for (int i = 0; i < hotel.getClientes().size(); i++) {
-            if (hotel.getClientes().get(i).getReservas()!=null)
-                for (int j = 0; j < hotel.getClientes().get(i).getReservas().size(); j++) {
-                    if (((Integer) id).equals(hotel.getClientes().get(i).getReservas().get(j).getId())){
-                    hotel.getClientes().get(i).getReservas().remove(j);
-                    eliminar=true;
-                    }
-                }
+    public List<Actividad> listarActividades(boolean ascendente) {
+        List<Actividad> lista2;
+        lista2 = this.hotel.getActividades();
+        Collections.sort(lista2);
+        if (!ascendente) {
+            Collections.reverse(lista2);
         }
-        return eliminar;*/
-        boolean eliminar = hotel.getClientes().stream()
-                .filter(cliente -> cliente.getReservas() != null)
-                .flatMap(cliente -> cliente.getReservas().stream())
-                .anyMatch(reserva -> Objects.equals(reserva.getId(), id));
-
-        if (eliminar) {
-            hotel.getClientes().forEach(cliente -> {
-                if (cliente.getReservas() != null) {
-                    cliente.getReservas().removeIf(reserva -> Objects.equals(reserva.getId(), id));
-                }
-            });
-        }
-        return eliminar;
+        return lista2;
     }
 
     @Override
-    public boolean reservarActividad(int id, LocalDate entrada, LocalDate salida, Cliente cliente) {
+    public boolean cancelarReserva(int id, Cliente cliente) {
+        return cliente.getReservas().stream()
+                .filter(r -> r.getId() == id)
+                .findFirst()
+                .map(r -> {
+                    cliente.getReservas().remove(r);
+                    return true;
+                })
+                .orElse(false);
+    }
+
+    @Override
+    public boolean reservarActividad(int id, Cliente cliente) {
         boolean hecho = false;
-        //LocalDate entrada= null;
-        //LocalDate salida= null;
         Actividad actividad = null;
         for (int i = 0; i < hotel.getActividades().size(); i++) {
             if (((Integer) id).equals(hotel.getActividades().get(i).getId())) {
                 actividad = hotel.getActividades().get(i);
             }
         }
-        if (actividad.disponible(cliente, entrada, salida)) {
+        if (actividad != null) {
             cliente.getActividades().add(actividad);
             hecho = true;
         }
-
         return hecho;
     }
 
@@ -185,31 +177,25 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
 
 
     @Override
-    public boolean moficarReservaFecha(int id, LocalDate entrada, LocalDate salida) {
-        /*boolean hecho= false;
-        for (int i = 0; i < hotel.getClientes().size(); i++) {
-            if (hotel.getClientes().get(i).getReservas()!=null){
-                for (int j = 0; j < hotel.getClientes().get(i).getReservas().size() && !hecho; j++) {
-                    if (((Integer) id).equals(hotel.getClientes().get(i).getReservas().get(j).getId())){
-                        hotel.getClientes().get(i).getReservas().get(j).setInquilinos(inquilinos);
-                        hecho= true;
-                    }
-                }
+    public boolean moficarReservaFecha(int id, LocalDate entrada, LocalDate salida, Cliente cliente) {
+        return cliente.getReservas().stream()
+                .filter(r -> r.getId() == id)
+                .map(r -> {
+                    r.setEntrada(entrada);
+                    r.setSalida(salida);
+                    return true;
+                })
+                .findFirst()
+                .orElse(false);
+        /*boolean hecho = false;
+        for (int i = 0; i < cliente.getReservas().size(); i++) {
+            if (cliente.getReservas().get(i).getId()==id){
+                cliente.getReservas().get(i).setEntrada(entrada);
+                cliente.getReservas().get(i).setSalida(salida);
+                hecho = true;
             }
         }
         return hecho;*/
-        boolean hecho = hotel.getClientes().stream()
-                .filter(cliente -> cliente.getReservas() != null)
-                .flatMap(cliente -> cliente.getReservas().stream())
-                .filter(reserva -> ((Integer) reserva.getId()).equals(Integer.valueOf(id)))
-                .findFirst()
-                .map(reserva -> {
-                    reserva.setEntrada(entrada);
-                    reserva.setSalida(salida);
-                    return true;
-                })
-                .orElse(false);
-        return hecho;
     }
 
     @Override

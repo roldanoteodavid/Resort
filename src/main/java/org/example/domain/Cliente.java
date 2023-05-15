@@ -55,10 +55,18 @@ public @Data class Cliente implements Serializable, Comparable<Cliente> {
     }
 
     public boolean anyadirreserva(Reserva reserva) {
-        return reservas.add(reserva);
+        boolean anyadido = reservas.add(reserva);
+        asignarIdReserva();
+        return anyadido;
     }
 
-
+    public void asignarIdReserva() {
+        for (int i = 0; i < reservas.size(); i++) {
+            if (reservas.get(i).getId() == 0) {
+                reservas.get(i).setId(i);
+            }
+        }
+    }
 
     @Override
     public String toString() {

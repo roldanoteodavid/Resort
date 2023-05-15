@@ -139,7 +139,8 @@ public class GestionarClientes {
                         case 1 -> anyadirActividad();
                         case 2 -> cancelarActividad();
                         case 3 -> verMisActividades();
-                        case 4 -> System.out.println(Constantes.HAS_ELEGIDO_SALIR);
+                        case 4 -> verActividades();
+                        case 5 -> System.out.println(Constantes.HAS_ELEGIDO_SALIR);
                         default -> System.out.println(Constantes.INTRODUZCA_UNA_OPCIÓN_VÁLIDA);
                     }
                     break;
@@ -221,7 +222,7 @@ public class GestionarClientes {
     public void cancelarReserva() {
         Scanner sc = new Scanner(System.in);
         System.out.println(Constantes.INTRODUCE_EL_ID_DE_LA_RESERVA);
-        serviciosReservas.cancelarReserva(sc.nextInt());
+        serviciosReservas.cancelarReserva(sc.nextInt(), cliente);
     }
 
     public void verReservas() {
@@ -251,7 +252,7 @@ public class GestionarClientes {
         LocalDate salida = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
         System.out.println(Constantes.INTRODUCE_EL_ID_DE_LA_RESERVA1);
         int id = sc.nextInt();
-        serviciosReservas.modificarReservaFecha(id, entrada, salida);
+        serviciosReservas.modificarReservaFecha(id, entrada, salida, cliente);
 
     }
 
@@ -259,11 +260,7 @@ public class GestionarClientes {
         Scanner sc = new Scanner(System.in);
         System.out.println(Constantes.INTRODUZCA_EL_ID_DE_LA_ACTIVIDAD);
         int id = sc.nextInt();
-        System.out.println(Constantes.INTRODUCE_EL_DIA_MES_Y_AÑO_DE_TU_FECHA_DE_LLEGADA);
-        LocalDate entrada = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
-        System.out.println(Constantes.INTRODUCE_EL_DIA_MES_Y_AÑO_DE_TU_FECHA_DE_SALIDA);
-        LocalDate salida = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
-        if (serviciosReservas.reservarActividad(id, entrada, salida, cliente))
+        if (serviciosReservas.reservarActividad(id, cliente))
             System.out.println(Constantes.ACTIVIDAD_RESERVADA_CN_EXITO);
     }
 
@@ -284,6 +281,19 @@ public class GestionarClientes {
             ascendente = false;
         }
         System.out.println(serviciosReservas.verMisActividades(cliente, ascendente));
+    }
+
+    public void verActividades(){
+        Scanner teclado = new Scanner(System.in);
+        boolean ascendente = true;
+        System.out.println(Constantes.INTRODUZCA_1_SI_DESEA_VER_LA_LISTA_ASCENDENTE_O_2_PARA_DESCENDENTE);
+        int opcion = obtenerNumero();
+        if (opcion == 1) {
+            ascendente = true;
+        } else if (opcion == 2) {
+            ascendente = false;
+        }
+        System.out.println(serviciosReservas.listarActividades(ascendente));
     }
 
     public void modificarContrasenya() {

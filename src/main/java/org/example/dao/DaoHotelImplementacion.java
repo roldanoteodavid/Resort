@@ -148,7 +148,6 @@ public class DaoHotelImplementacion implements DaoHotel {
 
     public List<Reserva> listarReservasFecha(boolean ascendente, Cliente cliente) {
         List<Reserva> reservas = cliente.getReservas();
-
         Comparator<Reserva> comparator = new Comparator<Reserva>() {
             @Override
             public int compare(Reserva r1, Reserva r2) {

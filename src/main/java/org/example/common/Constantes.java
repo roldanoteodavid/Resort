@@ -69,7 +69,7 @@ public class Constantes {
     public static final String INTRODUZCA_1_PARA_GESTIONAR_LAS_RESERVAS_2_PARA_GESTIONAR_LAS_ACTIVIDADES_3_PARA_CAMBIAR_LA_CONTRASEÑA_Y_4_PARA_SALIR = "Introduzca 1 para gestionar las reservas, 2 para gestionar las actividades, 3 para cambiar la contraseña y 4 para salir";
     public static final String INTRODUZCA_1_PARA_AÑADIR_UNA_RESERVA_2_PARA_CANCELAR_UNA_RESERVA_3_PARA_VER_SUS_RESERVAS_4_PARA_MODIFICAR_LA_FECHA_DE_UNA_RESERVA_EXISTENTE_Y_5_PARA_SALIR = "Introduzca 1 para añadir una reserva, 2 para cancelar una reserva, 3 para ver sus reservas, 4 para modificar la fecha de una reserva existente y 5 para salir.";
     public static final String HAS_ELEGIDO_SALIR = "Has elegido salir.";
-    public static final String INTRODUZCA_1_PARA_RESERVAR_UNA_ACTIVIDAD_2_PARA_CANCELAR_UNA_ACTIVIDAD_3_PARA_VER_SUS_ACTIVIDADES_Y_4_PARA_SALIR = "Introduzca 1 para reservar una actividad, 2 para cancelar una actividad, 3 para ver sus actividades y 4 para salir.";
+    public static final String INTRODUZCA_1_PARA_RESERVAR_UNA_ACTIVIDAD_2_PARA_CANCELAR_UNA_ACTIVIDAD_3_PARA_VER_SUS_ACTIVIDADES_Y_4_PARA_SALIR = "Introduzca 1 para reservar una actividad, 2 para cancelar una actividad, 3 para ver sus actividades, 4 para ver actividades disponible y 5 para salir.";
     public static final String INTRODUCE_EL_DIA_MES_Y_AÑO_DE_LA_LLEGADA = "Introduce el dia, mes y año de la llegada";
     public static final String DÍA = "Día.";
     public static final String MES = "Mes.";

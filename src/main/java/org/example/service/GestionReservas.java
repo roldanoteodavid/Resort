@@ -31,7 +31,12 @@ public class GestionReservas implements IGestionReservas{
         return daoReservas.verMisActividades(cliente, ascendente);
     }
 
-@Override
+    @Override
+    public List<Actividad> listarActividades(boolean ascendente) {
+        return daoReservas.listarActividades(ascendente);
+    }
+
+    @Override
     public boolean anyadirCliente(Cliente cliente) {
         return daoReservas.anyadirCliente(cliente);
     }
@@ -57,13 +62,13 @@ public class GestionReservas implements IGestionReservas{
     }
 
     @Override
-    public boolean cancelarReserva(int id) {
-        return daoReservas.cancelarReserva(id);
+    public boolean cancelarReserva(int id, Cliente cliente) {
+        return daoReservas.cancelarReserva(id, cliente);
     }
 
     @Override
-    public boolean reservarActividad(int id, LocalDate entrada, LocalDate salida, Cliente cliente) {
-        return daoReservas.reservarActividad(id, entrada, salida, cliente);
+    public boolean reservarActividad(int id, Cliente cliente) {
+        return daoReservas.reservarActividad(id, cliente);
     }
 
     @Override
@@ -77,8 +82,8 @@ public class GestionReservas implements IGestionReservas{
     }
 
     @Override
-    public boolean modificarReservaFecha(int id, LocalDate entrada, LocalDate salida) {
-        return daoReservas.moficarReservaFecha(id, entrada, salida);
+    public boolean modificarReservaFecha(int id, LocalDate entrada, LocalDate salida, Cliente cliente) {
+        return daoReservas.moficarReservaFecha(id, entrada, salida, cliente);
     }
 
     @Override
