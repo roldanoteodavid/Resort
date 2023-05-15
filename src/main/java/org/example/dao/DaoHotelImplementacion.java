@@ -102,14 +102,6 @@ public class DaoHotelImplementacion implements DaoHotel {
         }
         return lista2;
     }
-
-    /*        List<Cliente> clientes= hotel.getClientes();
-            clientes.sort((Comparator<? super Cliente>) clientes);
-            if (!ascendente)
-                ((Comparator<?>) clientes).reversed();
-            return clientes;
-        }
-    */
     @Override
     public boolean borrarCliente(String dni) {
         return hotel.getClientes().removeIf(cliente -> (dni).equalsIgnoreCase(cliente.getDni()));
