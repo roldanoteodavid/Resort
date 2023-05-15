@@ -48,9 +48,12 @@ public class GestionarHotel {
                                 borrarCliente();
                                 break;
                             case 4:
-                                numeroClientesPais();
+                                clientesporPais();
                                 break;
                             case 5:
+                                numeroClientesPais();
+                                break;
+                            case 6:
                                 System.out.println(Constantes.HA_ELEGIDO_SALIR);
                                 break;
                             default:
