@@ -7,6 +7,7 @@ import org.example.common.TipoException;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public @Data class Habitacion implements Comparable<Habitacion>, Serializable {
@@ -19,6 +20,7 @@ public @Data class Habitacion implements Comparable<Habitacion>, Serializable {
     public Habitacion(int numero, int capacidad, String tipo) throws TipoException {
         this.numero = numero;
         this.capacidad = capacidad;
+        this.fechasocupadas = new ArrayList<>();
         Comprobacion.tipoOk(tipo);
         this.tipo = tipo;
         this.precio = precioHabitacion(tipo);
@@ -36,7 +38,7 @@ public @Data class Habitacion implements Comparable<Habitacion>, Serializable {
 
     public boolean estanOcupadas(LocalDate entrada, LocalDate salida){
         boolean ocupada = false;
-        List<LocalDate> aux = null;
+        List<LocalDate> aux = new ArrayList<>();
         boolean fin = false;
         for (int i = 0; !fin; i++) {
             aux.add(entrada.plusDays(i));

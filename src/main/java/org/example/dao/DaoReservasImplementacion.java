@@ -203,7 +203,7 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
 
     @Override
     public List<Habitacion> obtenerHabitaciones(LocalDate entrada, LocalDate salida) {
-        List<Habitacion> disponibles = null;
+        List<Habitacion> disponibles = new ArrayList<>();
         for (int i = 0; i < hotel.getHabitaciones().size(); i++) {
             if (!hotel.getHabitaciones().get(i).estanOcupadas(entrada, salida))
                 disponibles.add(hotel.getHabitaciones().get(i));

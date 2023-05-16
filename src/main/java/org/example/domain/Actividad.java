@@ -6,6 +6,7 @@ import org.example.common.LugarException;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public @Data class Actividad implements Serializable, Comparable<Actividad> {
@@ -18,6 +19,7 @@ public @Data class Actividad implements Serializable, Comparable<Actividad> {
     public Actividad(int id,String nombre,String lugar,double precio) throws LugarException {
         this.id=id;
         this.nombre=nombre;
+        this.fechas = new ArrayList<>();
         Comprobacion.lugarOk(lugar);
         this.lugar=lugar;
         this.precio=precio;

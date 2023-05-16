@@ -40,11 +40,11 @@ public @Data class Hotel implements Serializable {
             actividades.add(act5);
             actividades.add(act6);
             Habitacion hab1 = new Habitacion(1, 2, "doble");
-            Habitacion hab2 = new Habitacion(1, 4, "quad");
-            Habitacion hab3 = new Habitacion(1, 2, "doble");
-            Habitacion hab4 = new Habitacion(1, 6, "king");
-            Habitacion hab5 = new Habitacion(1, 6, "king");
-            Habitacion hab6 = new Habitacion(1, 4, "quad");
+            Habitacion hab2 = new Habitacion(2, 4, "quad");
+            Habitacion hab3 = new Habitacion(3, 2, "doble");
+            Habitacion hab4 = new Habitacion(4, 6, "king");
+            Habitacion hab5 = new Habitacion(5, 6, "king");
+            Habitacion hab6 = new Habitacion(6, 4, "quad");
             habitaciones.add(hab1);
             habitaciones.add(hab2);
             habitaciones.add(hab3);
