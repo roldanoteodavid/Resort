@@ -72,6 +72,14 @@ public @Data class Habitacion implements Comparable<Habitacion>, Serializable {
         return precio;
     }
 
+    public String toStringCliente() {
+        return "Habitacion{" +
+                "numero=" + numero +
+                ", capacidad=" + capacidad +
+                ", precio=" + precio +
+                ", tipo='" + tipo + '\'' +
+                '}';
+    }
 
     /**
      * Compares this object with the specified object for order.  Returns a
