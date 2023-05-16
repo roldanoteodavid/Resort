@@ -33,11 +33,12 @@ public class GestionarHotel {
             do {
                 System.out.println(Constantes.INTRODUZCA_1_PARA_GESTIONAR_LOS_CLIENTES_2_PARA_GESTIONAR_HABITACIONES_3_PARA_LAS_ACTIVIDADES_Y_4_PARA_SALIR);
                 opcion = mostrarMenu();
+                int numo;
                 switch (opcion) {
                     case 1:
                         System.out.println(Constantes.INTRODUZCA_1_PARA_VER_LA_LISTA_DE_CLIENTES_2_PARA_AÑADIR_UN_CLIENTE_3_PARA_BORRAR_UN_CLIENTE_Y_4_PARA_SALIR);
-                        opcion = mostrarMenu();
-                        switch (opcion) {
+                        numo = mostrarMenu();
+                        switch (numo) {
                             case 1:
                                 verClientes();
                                 break;
@@ -62,8 +63,8 @@ public class GestionarHotel {
                         break;
                     case 2:
                         System.out.println(Constantes.INTRODUZCA_1_PARA_VER_LA_LISTA_DE_HABITACIONES_2_PARA_AÑADIR_UNA_HABITACIÓN_3_PARA_BORRAR_UNA_HABITACIÓN_4_PARA_COMPROBAR_LA_DISPONIBILIDAD_Y_5_PARA_SALIR);
-                        opcion = mostrarMenu();
-                        switch (opcion) {
+                        numo = mostrarMenu();
+                        switch (numo) {
                             case 1:
                                 verHabitaciones();
                                 break;
@@ -85,8 +86,8 @@ public class GestionarHotel {
                         break;
                     case 3:
                         System.out.println(Constantes.INTRODUZCA_1_PARA_VER_LA_LISTA_DE_ACTIVIDADES_2_PARA_AÑADIR_UNA_ACTIVIDAD_3_PARA_AÑADIR_UNA_FECHA_A_UNA_ACTIVIDAD_4_PARA_BORRAR_UNA_ACTIVIDAD_Y_5_PARA_SALIR);
-                        opcion = mostrarMenu();
-                        switch (opcion) {
+                        numo = mostrarMenu();
+                        switch (numo) {
                             case 1:
                                 verActividades();
                                 break;
