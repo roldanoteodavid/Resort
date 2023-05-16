@@ -326,8 +326,11 @@ public class GestionarClientes {
             } while (!passvalid);
             System.out.println(Constantes.CONFIRMAR_CONTRASEÑA);
             String cotrasenya2 = teclado.nextLine();
-            if (contrasenya.equalsIgnoreCase(cotrasenya2))
+            if (contrasenya.equalsIgnoreCase(cotrasenya2)){
                 coinciden = true;
+            }else {
+                System.out.println(Constantes.LAS_CONTRASEÑAS_NO_COINCIDEN);
+            }
         }
         serviciosReservas.modificarContrasenya(cliente.getDni(), contrasenya);
     }

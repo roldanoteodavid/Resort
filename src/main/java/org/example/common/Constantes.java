@@ -93,4 +93,5 @@ public class Constantes {
     public static final String HABITACIÓN_AÑADIDA = "Habitación añadida.";
     public static final String NO_TIENES_RESERVAS = "No tienes ninguna reserva.";
     public static final String HABITACIONES_DISPONIBLES = "Las habitaciones disponibles para las fechas indicadas son:";
+    public static final String LAS_CONTRASEÑAS_NO_COINCIDEN = "Las contraseñas introducidas no coinciden.";
 }
