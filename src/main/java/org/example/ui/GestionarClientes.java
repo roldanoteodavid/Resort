@@ -198,10 +198,10 @@ public class GestionarClientes {
         sc.nextLine();
         LocalDate salida = LocalDate.of(anyo2, mes2, dia2);
         List<Habitacion> aux = serviciosReservas.obtenerHabitaciones(entrada, salida);
+        System.out.println(Constantes.HABITACIONES_DISPONIBLES);
         for (int i = 0; i < aux.size(); i++) {
             System.out.println(aux.get(i).toStringCliente());
         }
-        //System.out.println(aux);
         System.out.println(Constantes.INTRODUCE_EL_NUMERO_DE_LAS_HABITACIONES_QUE_VAS_A_NECESITAR);
         int opcion = obtenerNumero();
         List<Integer> habitaciones = new ArrayList<>();
