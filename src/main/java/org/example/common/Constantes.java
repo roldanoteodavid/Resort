@@ -91,4 +91,5 @@ public class Constantes {
     public static final String INTRODUCE_EL_NUMERO_DE_INQUILINOS = "Introduce el numero de inquilinos";
     public static final String INTRODUZCA_SU_TELÉFONO = "Introduzca su teléfono.";
     public static final String HABITACIÓN_AÑADIDA = "Habitación añadida.";
+    public static final String NO_TIENES_RESERVAS = "No tienes ninguna reserva.";
 }

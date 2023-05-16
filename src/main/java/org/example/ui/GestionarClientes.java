@@ -118,11 +118,12 @@ public class GestionarClientes {
         do {
             System.out.println(Constantes.INTRODUZCA_1_PARA_GESTIONAR_LAS_RESERVAS_2_PARA_GESTIONAR_LAS_ACTIVIDADES_3_PARA_CAMBIAR_LA_CONTRASEÑA_Y_4_PARA_SALIR);
             opcion = obtenerNumero();
+            int numo;
             switch (opcion) {
                 case 1:
                     System.out.println(Constantes.INTRODUZCA_1_PARA_AÑADIR_UNA_RESERVA_2_PARA_CANCELAR_UNA_RESERVA_3_PARA_VER_SUS_RESERVAS_4_PARA_MODIFICAR_LA_FECHA_DE_UNA_RESERVA_EXISTENTE_Y_5_PARA_SALIR);
-                    opcion = obtenerNumero();
-                    switch (opcion) {
+                    numo = obtenerNumero();
+                    switch (numo) {
                         case 1 -> anyadirReserva();
                         case 2 -> cancelarReserva();
                         case 3 -> verReservas();
@@ -134,8 +135,8 @@ public class GestionarClientes {
                     break;
                 case 2:
                     System.out.println(Constantes.INTRODUZCA_1_PARA_RESERVAR_UNA_ACTIVIDAD_2_PARA_CANCELAR_UNA_ACTIVIDAD_3_PARA_VER_SUS_ACTIVIDADES_Y_4_PARA_SALIR);
-                    opcion = obtenerNumero();
-                    switch (opcion) {
+                    numo = obtenerNumero();
+                    switch (numo) {
                         case 1 -> anyadirActividad();
                         case 2 -> cancelarActividad();
                         case 3 -> verMisActividades();
@@ -154,7 +155,7 @@ public class GestionarClientes {
                     System.out.println(Constantes.INTRODUZCA_UNA_OPCIÓN_VÁLIDA);
             }
 
-        } while (opcion != 10);
+        } while (opcion != 4);
     }
 
     public static int obtenerNumero() {
@@ -241,7 +242,12 @@ public class GestionarClientes {
                 default:
             }
         } while (!sigue);
-        System.out.println(serviciosReservas.verReservas(ascendente, cliente));
+        if (serviciosReservas.verReservas(ascendente, cliente).isEmpty()) {
+            System.out.println(Constantes.NO_TIENES_RESERVAS);
+        } else {
+            System.out.println(serviciosReservas.verReservas(ascendente, cliente));
+        }
+        //System.out.println(serviciosReservas.verReservas(ascendente, cliente));
     }
 
     public void modificarReservaFecha() {

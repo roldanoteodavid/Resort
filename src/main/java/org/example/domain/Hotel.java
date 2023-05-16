@@ -56,11 +56,13 @@ public @Data class Hotel implements Serializable {
             Cliente cli3 = new Cliente("36008692Y", "Julia", LocalDate.of(1945, 6, 30), "+54 609126096", "Argentina", "1234");
             Cliente cli4 = new Cliente("86048692Z", "Brytiago", LocalDate.of(1993, 8, 7), "+1 719063092", "Puerto Rico", "1234");
             Cliente cli5 = new Cliente("76008692X", "Carlota", LocalDate.of(2000, 2, 12), "+39 691095287", "Italia", "1234");
+            Cliente cli6 = new Cliente("00A", "Test", LocalDate.of(2023, 5, 19), "+39 691095287", "Italia", "1234");
             clientes.add(cli1);
             clientes.add(cli2);
             clientes.add(cli3);
             clientes.add(cli4);
             clientes.add(cli5);
+            clientes.add(cli6);
         } catch (LugarException | TipoException | AlFrancesException e) {
             throw new RuntimeException(e);
         }

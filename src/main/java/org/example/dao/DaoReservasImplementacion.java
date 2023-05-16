@@ -153,10 +153,13 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
 
     @Override
     public List<Reserva> verReservas(boolean ascendente, Cliente cliente) {
-        List<Reserva> reservas = cliente.getReservas();
-        Collections.sort(reservas);
-        if (!ascendente)
-            Collections.reverse(reservas);
+        List<Reserva> reservas = null;
+        if (cliente.getReservas()!=null) {
+            reservas = cliente.getReservas();
+            Collections.sort(reservas);
+            if (!ascendente)
+                Collections.reverse(reservas);
+        }
         return reservas;
     }
 

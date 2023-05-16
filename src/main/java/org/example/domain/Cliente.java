@@ -6,6 +6,7 @@ import org.example.common.Comprobacion;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public @Data class Cliente implements Serializable, Comparable<Cliente> {
@@ -27,6 +28,8 @@ public @Data class Cliente implements Serializable, Comparable<Cliente> {
         this.nombre = nombre;
         this.nacimiento = nacimiento;
         this.telefono = telefono;
+        this.actividades = new ArrayList<>();
+        this.reservas = new ArrayList<>();
         Comprobacion.alFrances(pais);
         this.pais = pais;
         this.contrasenya = contrasenya;
@@ -39,6 +42,7 @@ public @Data class Cliente implements Serializable, Comparable<Cliente> {
         this.nacimiento = nacimiento;
         this.telefono = telefono;
         this.reservas = reservas;
+        this.actividades = new ArrayList<>();
         Comprobacion.alFrances(pais);
         this.pais = pais;
         this.contrasenya = contrasenya;
