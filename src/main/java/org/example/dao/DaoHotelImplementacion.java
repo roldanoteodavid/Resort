@@ -182,13 +182,7 @@ public class DaoHotelImplementacion implements DaoHotel {
             anyadir= true;
         hotel.setActividades(actividades);
         return anyadir;*/
-        return Optional.ofNullable(hotel.getActividades())
-                .map(lista -> {
-                    boolean anyadir = lista.add(actividad);
-                    hotel.setActividades(lista);
-                    return anyadir;
-                })
-                .orElse(false);
+        return hotel.getActividades().add(actividad);
     }
 
     @Override
