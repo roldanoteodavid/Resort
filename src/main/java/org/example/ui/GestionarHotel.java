@@ -130,7 +130,6 @@ public class GestionarHotel {
                 System.out.println(Constantes.INTRODUCE_NÚMERO);
                 num = teclado.nextInt();
                 vuelve = true;
-                //has metido un número!!
             } catch (InputMismatchException exception) {
                 System.out.println(Constantes.TIENES_QUE_INTRODUCIR_UN_NÚMERO_NO_UNA_LETRA);
                 System.out.println(exception.getMessage());
@@ -169,7 +168,6 @@ public class GestionarHotel {
             }
         } catch (TipoException e) {
             System.out.println(e.getMessage());
-            //throw new RuntimeException(e);
         }
     }
 

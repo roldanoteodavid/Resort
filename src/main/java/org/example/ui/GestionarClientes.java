@@ -106,14 +106,11 @@ public class GestionarClientes {
             }
         } catch (AlFrancesException e) {
             System.out.println(e.getMessage());
-            //throw new RuntimeException(e);
         }
         return iniciado;
     }
 
     public void sacarMenu() {
-
-        //cliente = serviciosReservas.clientePorDni(dni);
         int opcion = 0;
         do {
             System.out.println(Constantes.INTRODUZCA_1_PARA_GESTIONAR_LAS_RESERVAS_2_PARA_GESTIONAR_LAS_ACTIVIDADES_3_PARA_CAMBIAR_LA_CONTRASEÑA_Y_4_PARA_SALIR);
@@ -250,7 +247,6 @@ public class GestionarClientes {
         } else {
             System.out.println(serviciosReservas.verReservas(ascendente, cliente));
         }
-        //System.out.println(serviciosReservas.verReservas(ascendente, cliente));
     }
 
     public void modificarReservaFecha() {

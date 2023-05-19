@@ -72,7 +72,4 @@ public @Data class Reserva implements Serializable , Comparable<Reserva> {
     public int compareTo(@NotNull Reserva o) {
         return entrada.compareTo(o.entrada);
     }
-    /*public int compareTo(Habitacion o) {
-        return Integer.compare(numero,o.numero);
-    }*/
 }
