@@ -6,8 +6,6 @@ import org.example.domain.Hotel;
 import java.io.*;
 
 public class DaoHotelFicheros {
-    //public static final String FICHERO = "Fichero";
-    //public static final String FICHEROB = "FicheroBinario";
     private Configuration config;
 
     public static void crearFicheros() throws IOException {
