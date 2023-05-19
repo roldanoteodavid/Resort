@@ -48,11 +48,6 @@ public class DaoHotelImplementacion implements DaoHotel {
 
     @Override
     public List<Habitacion> listarHabitaciones(boolean ascendente) {
-        /*List<Habitacion> habitaciones = hotel.getHabitaciones();
-        habitaciones.sort((Comparator<? super Habitacion>) habitaciones);
-        if (!ascendente)
-            ((Comparator<?>) habitaciones).reversed();
-        return habitaciones;*/
         List<Habitacion> lista2;
         lista2 = this.hotel.getHabitaciones();
         Collections.sort(lista2);
@@ -70,16 +65,6 @@ public class DaoHotelImplementacion implements DaoHotel {
 
     @Override
     public boolean addReserva(Reserva reserva, String dni) {
-        /*boolean hecho = false;
-        for (int ç = 0; ç < hotel.getClientes().size(); ç++) {
-            if (hotel.getClientes().get(ç).getDni().equalsIgnoreCase(dni)){
-                hecho= true;
-                List<Reserva> reservas= hotel.getClientes().get(ç).getReservas();
-                reservas.add(reserva);
-                hotel.getClientes().get(ç).setReservas(reservas);
-            }
-        }
-        return hecho*/
         return hotel.getClientes().stream()
                 .filter(cliente -> cliente.getDni().equalsIgnoreCase(dni))
                 .findFirst()
@@ -164,54 +149,23 @@ public class DaoHotelImplementacion implements DaoHotel {
 
     @Override
     public boolean isEmptyReservasList() {
-        /*boolean hay = false;
-        for (int i = 0; i < hotel.getClientes().size() && !hay; i++) {
-            if (hotel.getClientes().get(i).getReservas()!=null)
-               hay= true;
-        }
-        return hay;*/
         return hotel.getClientes().stream()
                 .anyMatch(cliente -> cliente.getReservas() != null);
     }
 
     @Override
     public boolean anyadirActividad(Actividad actividad) {
-        /*boolean anyadir = false;
-        List<Actividad> actividades =hotel.getActividades();
-        if (actividades.add(actividad))
-            anyadir= true;
-        hotel.setActividades(actividades);
-        return anyadir;*/
         return hotel.getActividades().add(actividad);
     }
 
     @Override
     public boolean borrarActividad(int id) {
-        /*boolean borrar = false;
-        List<Actividad> actividades =hotel.getActividades();
-        for (int i = 0; i < actividades.size(); i++) {
-            if (((Integer) id).equals(actividades.get(i).getId())) {
-                actividades.remove(actividades.get(i));
-                borrar= true;
-            }
-        }
-        hotel.setActividades(actividades);
-        return borrar;*/
         return hotel.getActividades()
                 .removeIf(actividad -> ((Integer) id).equals(actividad.getId()));
     }
 
     @Override
     public boolean anyadirFechaActividad(LocalDate fecha, int id) {
-        /*boolean anyadir = false;
-        for (int i = 0; i < hotel.getActividades().size(); i++) {
-            if(hotel.getActividades().get(i).getId()==id){
-                hotel.getActividades().get(i).getFechas().add(fecha);
-                i= hotel.getActividades().size();
-                anyadir= true;
-            }
-        }
-        return anyadir;*/
         return hotel.getActividades().stream()
                 .filter(actividad -> actividad.getId() == id)
                 .findFirst()

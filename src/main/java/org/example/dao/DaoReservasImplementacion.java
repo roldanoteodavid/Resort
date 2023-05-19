@@ -27,8 +27,7 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
 
     @Override
     public void setHotel(Hotel hotel1) {
-        //new DaoReservasImplementacion(hotel1);
-        //pa que queremos meter un hotel?;
+        new DaoReservasImplementacion(hotel1);
     }
 
     @Override
@@ -38,16 +37,6 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
 
     @Override
     public boolean iniciarSesion(String dni, String contrasenya) {
-        /*
-        boolean inicio = false;
-        for (int i = 0; i < hotel.getClientes().size(); i++) {
-            if (hotel.getClientes().get(i).getDni().equalsIgnoreCase(dni)){
-                if (hotel.getClientes().get(i).getContrasenya().equalsIgnoreCase(contrasenya)){
-                    inicio = true;
-                }
-            }
-        }
-        return inicio;*/
         return hotel.getClientes().stream()
                 .anyMatch(cliente -> cliente.getDni().equalsIgnoreCase(dni)
                         && cliente.getContrasenya().equalsIgnoreCase(contrasenya));
@@ -60,19 +49,6 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
 
     @Override
     public boolean modificarContrasenya(String dni, String contrasenya) {
-        /*Cliente cambio=null;
-        boolean hecho=false;
-        for (int i = 0; i < hotel.getClientes().size(); i++) {
-            if (dni.equalsIgnoreCase(hotel.getClientes().get(i).getDni())){
-                cambio=hotel.getClientes().get(i);
-            }
-        }
-        if (cambio!=null){
-            cambio.setContrasenya(contrasenya);
-            hecho=true;
-        }
-
-        return hecho;*/
         Optional<Cliente> cambio = hotel.getClientes().stream()
                 .filter(cliente -> dni.equalsIgnoreCase(cliente.getDni()))
                 .findFirst();
@@ -135,14 +111,6 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
 
     @Override
     public boolean cancelarActividad(int id, Cliente cliente) {
-        /*boolean hecho = false;
-        List<Actividad> actividades = hotel.getActividades();
-        for (int i = 0; i < hotel.getActividades().size(); i++) {
-            if (((Integer) id).equals(hotel.getActividades().get(i).getId())) {
-                hotel.getActividades().remove(hotel.getActividades().get(i));
-            }
-        }
-        return hecho;*/
         List<Actividad> actividades = cliente.getActividades();
         boolean hecho = actividades.removeIf(a -> ((Integer) id).equals(a.getId()));
         if (hecho) {
@@ -165,13 +133,6 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
 
     @Override
     public Cliente clientePorDni(String dni) {
-        /*Cliente cliente = null;
-        for (int i = 0; i < hotel.getClientes().size(); i++) {
-            if (hotel.getClientes().get(i).equals(dni)){
-                cliente = hotel.getClientes().get(i);
-            }
-        }
-        return cliente;*/
         return hotel.getClientes().stream()
                 .filter(cliente -> cliente.getDni().equalsIgnoreCase(dni))
                 .findFirst()
@@ -190,15 +151,6 @@ public @Data class DaoReservasImplementacion implements DaoReservas {
                 })
                 .findFirst()
                 .orElse(false);
-        /*boolean hecho = false;
-        for (int i = 0; i < cliente.getReservas().size(); i++) {
-            if (cliente.getReservas().get(i).getId()==id){
-                cliente.getReservas().get(i).setEntrada(entrada);
-                cliente.getReservas().get(i).setSalida(salida);
-                hecho = true;
-            }
-        }
-        return hecho;*/
     }
 
     @Override
