@@ -50,7 +50,6 @@ public class MainHotel {
                 //has metido un número!!
             } catch (InputMismatchException exception) {
                 System.out.println(Constantes.TIENES_QUE_INTRODUCIR_UN_NÚMERO_NO_UNA_LETRA);
-                System.out.println(exception.getMessage());
                 teclado.nextLine();
             }
         }
