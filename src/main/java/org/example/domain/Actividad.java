@@ -45,4 +45,5 @@ public @Data class Actividad implements Serializable, Comparable<Actividad> {
         }
         return hay;
     }
+
 }

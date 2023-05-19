@@ -97,9 +97,10 @@ public class GestionarClientes {
         System.out.println(Constantes.INTRODUZCA_SU_AÑO_DE_NACIMIENTO);
         int anyo = teclado.nextInt();
         try {
-            Cliente cliente = new Cliente(dni, nombre, LocalDate.of(anyo, mes, dia), telefono, pais, contrasenya);
-            if (serviciosReservas.anyadirCliente(cliente)) {
+            Cliente clientenuevo = new Cliente(dni, nombre, LocalDate.of(anyo, mes, dia), telefono, pais, contrasenya);
+            if (serviciosReservas.anyadirCliente(clientenuevo)) {
                 System.out.println(Constantes.CLIENTE_REGISTRADO);
+                cliente = clientenuevo;
                 iniciado = true;
             } else {
                 System.out.println(Constantes.ERROR_AL_REGISTRARSE);
