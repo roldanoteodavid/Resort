@@ -231,7 +231,6 @@ public class GestionarClientes {
         boolean sigue = false;
         boolean ascendente = false;
         do {
-
             System.out.println(Constantes.PULSE_1_SI_LO_QUIERE_DE_MANERA_ASCENDENTE_Y_2_SI_LO_QUIERE_DESCENDENTE);
             int opcion = obtenerNumero();
             switch (opcion) {
@@ -246,7 +245,7 @@ public class GestionarClientes {
         if (serviciosReservas.verReservas(ascendente, cliente).isEmpty()) {
             System.out.println(Constantes.NO_TIENES_RESERVAS);
         } else {
-            System.out.println(serviciosReservas.verReservas(ascendente, cliente));
+            serviciosReservas.verReservas(ascendente, cliente).forEach(System.out::println);
         }
     }
 
@@ -286,7 +285,7 @@ public class GestionarClientes {
         } else if (opcion == 2) {
             ascendente = false;
         }
-        System.out.println(serviciosReservas.verMisActividades(cliente, ascendente));
+        serviciosReservas.verMisActividades(cliente, ascendente).forEach(System.out::println);
     }
 
     public void verActividades(){
@@ -299,7 +298,7 @@ public class GestionarClientes {
         } else if (opcion == 2) {
             ascendente = false;
         }
-        System.out.println(serviciosReservas.listarActividades(ascendente));
+        serviciosReservas.listarActividades(ascendente).forEach(System.out::println);
     }
 
     public void modificarContrasenya() {

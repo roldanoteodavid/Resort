@@ -68,7 +68,7 @@ public @Data class Hotel implements Serializable {
         }
     }
 
-    public  void convertirJson(){
+    public void convertirJson(){
         Gson gson = new Gson();
         String actividadesJson = gson.toJson(actividades);
         try (FileWriter fileWriter = new FileWriter("actividades.json")) {

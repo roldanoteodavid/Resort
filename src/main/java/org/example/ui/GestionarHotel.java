@@ -140,7 +140,7 @@ public class GestionarHotel {
     }
 
     public void clientesporPais(){
-        System.out.println(serviciosHotel.clientesporPais());
+        serviciosHotel.clientesporPais().forEach((k, v) -> System.out.printf("%-30s | %s %n", k, serviciosHotel.clientesporPais().get(k)));
     }
 
     public void numeroClientesPais(){
@@ -204,7 +204,8 @@ public class GestionarHotel {
         } else if (opcion == 2) {
             ascendente = false;
         }
-        System.out.println(serviciosHotel.verClientes(ascendente));
+        //System.out.println(serviciosHotel.verClientes(ascendente));
+        serviciosHotel.verClientes(ascendente).forEach(System.out::println);
     }
 
     public void borrarCliente() {
@@ -310,7 +311,8 @@ public class GestionarHotel {
         } else if (opcion == 2) {
             ascendente = false;
         }
-        System.out.println(serviciosHotel.listarHabitaciones(ascendente));
+        //System.out.println(serviciosHotel.listarHabitaciones(ascendente));
+        serviciosHotel.listarHabitaciones(ascendente).forEach(System.out::println);
     }
 
     public void verActividades() {
@@ -323,6 +325,7 @@ public class GestionarHotel {
         } else if (opcion == 2) {
             ascendente = false;
         }
-        System.out.println(serviciosHotel.listarActividades(ascendente));
+        //System.out.println(serviciosHotel.listarActividades(ascendente));
+        serviciosHotel.listarActividades(ascendente).forEach(System.out::println);
     }
 }
