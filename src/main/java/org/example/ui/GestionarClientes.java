@@ -252,9 +252,23 @@ public class GestionarClientes {
     public void modificarReservaFecha() {
         Scanner sc = new Scanner(System.in);
         System.out.println(Constantes.INTRODUCE_EL_DIA_MES_Y_AÑO_DE_LA_NUEVA_FECHA_DE_LLEGADA);
-        LocalDate entrada = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
+        System.out.println(Constantes.DÍA);
+        int dia = sc.nextInt();
+        System.out.println(Constantes.MES);
+        int mes = sc.nextInt();
+        System.out.println(Constantes.AÑO);
+        int anyo = sc.nextInt();
+        sc.nextLine();
+        LocalDate entrada = LocalDate.of(anyo, mes, dia);
         System.out.println(Constantes.INTRODUCE_EL_DIA_MES_Y_AÑO_DE_LA_NUEVA_FECHA_DE_SALIDA);
-        LocalDate salida = LocalDate.of(sc.nextInt(), sc.nextInt(), sc.nextInt());
+        System.out.println(Constantes.DÍA);
+        int dia2 = sc.nextInt();
+        System.out.println(Constantes.MES);
+        int mes2 = sc.nextInt();
+        System.out.println(Constantes.AÑO);
+        int anyo2 = sc.nextInt();
+        sc.nextLine();
+        LocalDate salida = LocalDate.of(anyo2, mes2, dia2);
         System.out.println(Constantes.INTRODUCE_EL_ID_DE_LA_RESERVA1);
         int id = sc.nextInt();
         serviciosReservas.modificarReservaFecha(id, entrada, salida, cliente);

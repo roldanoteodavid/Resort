@@ -63,6 +63,16 @@ public @Data class Hotel implements Serializable {
             clientes.add(cli4);
             clientes.add(cli5);
             clientes.add(cli6);
+            ArrayList<Integer> habitacionesreserva1 = new ArrayList<>();
+            habitacionesreserva1.add(hab1.getNumero());
+            habitacionesreserva1.add(hab2.getNumero());
+            Reserva reserva1 = new Reserva(LocalDate.of(2021, 7, 1), LocalDate.of(2021, 7, 8), cli6.getDni(), 3, habitacionesreserva1);
+            cli6.getReservas().add(reserva1);
+            ArrayList<Integer> habitacionesreserva2 = new ArrayList<>();
+            habitacionesreserva2.add(hab3.getNumero());
+            habitacionesreserva2.add(hab4.getNumero());
+            Reserva reserva2 = new Reserva(LocalDate.of(2021, 7, 1), LocalDate.of(2021, 7, 8), cli5.getDni(), 3, habitacionesreserva2);
+            cli6.getReservas().add(reserva2);
         } catch (LugarException | TipoException | AlFrancesException e) {
             throw new RuntimeException(e);
         }
